@@ -6,6 +6,12 @@ rule for the dataset's.
 
 ## [Unreleased]
 
+- The workflow also runs the validation with two later graphsense-lib revisions in the place of 2.16.4: release
+  2.17.0, and `develop` after the merges of graphsense-lib pull requests
+  [#192](https://github.com/graphsense/graphsense-lib/pull/192) and
+  [#193](https://github.com/graphsense/graphsense-lib/pull/193). The README lists them. The tool, the dataset and
+  the published checksum are unchanged.
+
 ## [1.0.0] - 2026-10-08
 
 Initial release.

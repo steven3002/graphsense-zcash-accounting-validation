@@ -201,6 +201,16 @@ some graphsense-lib is installed; `--after-src` and `--before-src` take a direct
 `graphsenselib` package of a source checkout. A run that does not use the two pinned revisions is marked
 NON-CANONICAL in the report and is not compared with the published checksum.
 
+The workflow of this repository does this on every push for two later revisions of graphsense-lib, and requires
+a pass:
+
+| In the place of 2.16.4 | Commit of graphsense-lib |
+|---|---|
+| Release 2.17.0 | `2268134ac3d8fdad410071a7c1402c44ae9619b2` |
+| `develop` after the merges of [#192](https://github.com/graphsense/graphsense-lib/pull/192) and [#193](https://github.com/graphsense/graphsense-lib/pull/193), which make a missing required value raise and recompute the fee in one ingest mode | `e8b6660735b93c61f790f27de9f1abd2599d8d62` |
+
+Both report the expected values on all 47 transactions.
+
 ## More documentation
 
 | Page | Content |

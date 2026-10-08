@@ -71,3 +71,34 @@ jobs:
           enable-cache: false
       - run: uv run gs-zec-validate.py install
       - run: uv run gs-zec-validate.py run
+
+  # Later graphsense-lib revisions in the place of 2.16.4 must report the same expected values.
+  later-revisions:
+    name: after = ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: graphsense-lib 2.17.0
+            ref: 2268134ac3d8fdad410071a7c1402c44ae9619b2
+          - name: develop after 192 and 193
+            ref: e8b6660735b93c61f790f27de9f1abd2599d8d62
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: graphsense/graphsense-lib
+          ref: ${{ matrix.ref }}
+          path: graphsense-lib
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          version: "0.12.21"
+          python-version: "3.12"
+          enable-cache: false
+      - run: uv run gs-zec-validate.py install
+      - run: uv run gs-zec-validate.py run --after-src graphsense-lib/src

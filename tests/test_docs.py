@@ -78,6 +78,14 @@ def test_the_two_cut_off_dates_are_the_same():
     assert len(in_pyproject) == 1 and in_pyproject == in_script, (in_pyproject, in_script)
 
 
+def test_later_revisions_in_the_readme_are_the_ones_the_workflow_runs():
+    readme = read("README.md")
+    section = readme[readme.index("**Other revisions.**") : readme.index("## More documentation")]
+    workflow = read(".github", "workflows", "validate.yml")
+    listed = set(re.findall(r"\b[0-9a-f]{40}\b", section))
+    assert listed and listed == set(re.findall(r"^ +ref: ([0-9a-f]{40})$", workflow, re.MULTILINE))
+
+
 def test_dataset_page_matches_the_manifest(manifest):
     page = read("docs", "DATASET.md")
     rows = {}
