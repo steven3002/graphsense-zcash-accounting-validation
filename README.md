@@ -76,13 +76,13 @@ The last lines of a passing run:
 
 ```
 ----- gs-zec-validate confirmation -----
-tool        gs-zec-validate 1.0.0
+tool        gs-zec-validate 1.0.1
 dataset     1.0.0 (manifest sha256 9b945a5e1a4468502704c9ba39b95f646959aaf4028553fc5c5c58b66443fdac)
 before      graphsense-lib 2.16.3 (v2.16.3, commit c02cbdb544fe), code checksum 4bb3029346d707d1… — pinned code
 after       graphsense-lib 2.16.4 (v2.16.4, commit 411b987a0f24), code checksum 675521888b904da1… — pinned code
 cases       47; after matches the expected values on 47; before differs on 13, 13 of them explained
-results     sha256 2aa7d4024145c55e9a2829ffb393d41e250c0b07fee76ed68904cb5f93670805
-published   sha256 2aa7d4024145c55e9a2829ffb393d41e250c0b07fee76ed68904cb5f93670805 — identical
+results     sha256 74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc
+published   sha256 74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc — identical
 verdict     PASS (exit status 0)
 python      3.12.3 (cpython) on Linux x86_64; environments: before 3.12.3, after 3.12.3
 ----------------------------------------
@@ -162,7 +162,9 @@ of GraphSense's Zcash accounting is correct. In particular this repository does 
 - value entering the Sprout pool, which has not been possible on mainnet since 2020 and does not occur in the dataset;
 - other currencies, and graphsense-lib releases other than the two pinned ones (but see "Other revisions").
 
-It has been run on Linux x86-64 only. macOS, Windows and ARM are expected to work but are not proven.
+Before its first release it was run on Linux x86-64 only. The workflow of this repository also runs it on macOS
+(Apple silicon), Windows (x64) and Linux ARM64 on every push, in a job that is not required to pass. That job is
+the only evidence for those platforms.
 
 ## Where the evidence comes from
 

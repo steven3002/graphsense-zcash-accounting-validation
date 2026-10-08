@@ -6,11 +6,20 @@ rule for the dataset's.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-08
+
 - The workflow also runs the validation with two later graphsense-lib revisions in the place of 2.16.4: release
   2.17.0, and `develop` after the merges of graphsense-lib pull requests
   [#192](https://github.com/graphsense/graphsense-lib/pull/192) and
-  [#193](https://github.com/graphsense/graphsense-lib/pull/193). The README lists them. The tool, the dataset and
-  the published checksum are unchanged.
+  [#193](https://github.com/graphsense/graphsense-lib/pull/193). Both must report the expected values. The README
+  lists them.
+- The README and `docs/METHOD.md` say on which platforms the workflow runs the validation.
+- Tool 1.0.1: every command behaves as in 1.0.0. Only the version number it prints and the checksum below differ.
+  Dataset 1.0.0 is unchanged.
+- Published results checksum: `74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc`
+  (transformer layer: `bd7f36020c532bd26609784761207f5d760ba3987123f0de0d37da7c414a249d`).
+  It differs from the checksum of 1.0.0 only because the tool's version is part of the results; every other
+  member of the results is identical.
 
 ## [1.0.0] - 2026-10-08
 

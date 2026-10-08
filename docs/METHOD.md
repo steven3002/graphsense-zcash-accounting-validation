@@ -238,7 +238,9 @@ The tool recognises the pinned code by its checksum and the results checksum is 
   how the correction changes that flag.
 - Only GraphSense's Python ingest path is exercised: the exporter, its input resolver and, optionally, the
   transformer. Its Spark transformation and its databases are not.
-- Everything was run on Linux x86-64. The default lock files resolve to ready-made wheels for Python 3.10 to 3.13
-  on Linux (x86-64 and ARM64, glibc and musl), macOS (Intel and Apple silicon) and Windows x64, and on Windows
-  ARM64 from Python 3.11; none of those other platforms was run. The transformer layer's lock files do the same,
-  except on Alpine Linux (musl) and Windows ARM64, where the Cassandra driver has no ready-made wheel.
+- Before the first release everything was run on Linux x86-64. The default lock files resolve to ready-made wheels
+  for Python 3.10 to 3.13 on Linux (x86-64 and ARM64, glibc and musl), macOS (Intel and Apple silicon) and Windows
+  x64, and on Windows ARM64 from Python 3.11. Of those other platforms, the workflow of this repository runs the
+  default set-up on macOS (Apple silicon), Windows x64 and Linux ARM64 (glibc) with Python 3.12; the others were
+  not run. The transformer layer's lock files do the same, except on Alpine Linux (musl) and Windows ARM64, where
+  the Cassandra driver has no ready-made wheel; that layer was run on Linux x86-64 only.

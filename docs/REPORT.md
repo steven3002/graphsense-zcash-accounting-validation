@@ -36,8 +36,8 @@ jq -cjSa .results report/report.json | sha256sum
 such a run a different checksum is a failure. The file has one line per checksum:
 
 ```
-2aa7d4024145c55e9a2829ffb393d41e250c0b07fee76ed68904cb5f93670805  results
-127a724b17283f083c89a5e64ab639414e77b2f0933378bb681fe7a3b5b2b58d  transformer-results
+74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc  results
+bd7f36020c532bd26609784761207f5d760ba3987123f0de0d37da7c414a249d  transformer-results
 ```
 
 The checksum changes whenever the manifest, the evidence, the tool's version or the wording of a check changes.

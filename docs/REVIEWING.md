@@ -21,7 +21,7 @@ It takes about ten minutes. Nothing here needs trust in the author's machine.
    - the `results` checksum is
 
      ```
-     2aa7d4024145c55e9a2829ffb393d41e250c0b07fee76ed68904cb5f93670805
+     74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc
      ```
 
      and the `published` line says `identical`.
