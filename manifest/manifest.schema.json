@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence manifest of the GraphSense Zcash accounting validation",
+  "description": "Pins everything a validation run uses: the two code revisions, the evidence files, and for every transaction the expected values. All amounts are integers in zatoshi. See docs/MANIFEST.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_schema_version", "dataset", "revisions", "captures", "capture_differences_allowed", "required_shapes", "blocks", "previous_transactions", "cases"],
+  "properties": {
+    "manifest_schema_version": {"description": "Version of this file's structure. Changes only when the structure changes.", "const": 1},
+    "dataset": {
+      "description": "Identity and history of the dataset (evidence, cases and expected values).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "date", "network", "description", "changelog"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"description": "Semantic version of the dataset: major when a case is removed or an expected value changes, minor when cases or evidence are added, patch for text only.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "date": {"description": "Date of this dataset version (UTC).", "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "network": {"description": "The chain all evidence comes from.", "const": "zcash-mainnet"},
+        "description": {"type": "string", "minLength": 1},
+        "changelog": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["version", "date", "changes"],
+            "properties": {
+              "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+              "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+              "changes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+            }
+          }
+        }
+      }
+    },
+    "revisions": {
+      "description": "The two graphsense-lib revisions that are compared.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "after"],
+      "properties": {
+        "before": {"$ref": "#/$defs/revision"},
+        "after": {"$ref": "#/$defs/revision"}
+      }
+    },
+    "captures": {
+      "description": "Where and how evidence was captured. Keys are capture names used by the evidence entries.",
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/capture"}
+    },
+    "capture_differences_allowed": {
+      "description": "The only differences allowed between two captures of the same block, with the reason for each.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "parents", "rule", "reason"],
+        "properties": {
+          "key": {"description": "Name of the JSON member.", "type": "string", "minLength": 1},
+          "parents": {"description": "Names of the enclosing members in which the rule applies; null means anywhere.", "type": ["array", "null"], "items": {"type": "string"}},
+          "rule": {"description": "ignored: values may differ freely. byte-reversed: hex strings may differ only in byte order.", "enum": ["ignored", "byte-reversed"]},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "required_shapes": {
+      "description": "Shapes the dataset must contain at least once. A run fails if one of them has no case.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "blocks": {
+      "description": "The evidence blocks. Every transaction of every block listed here is a case.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["height", "hash", "transaction_count", "evidence", "previous_transactions", "expected"],
+        "properties": {
+          "height": {"$ref": "#/$defs/count"},
+          "hash": {"$ref": "#/$defs/hex64"},
+          "transaction_count": {"type": "integer", "minimum": 1},
+          "evidence": {"description": "One entry per capture of this block (`getblock <height> 2`).", "type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}},
+          "previous_transactions": {"description": "Ids of the earlier transactions whose outputs this block's transparent inputs spend.", "type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/hex64"}},
+          "expected": {
+            "description": "The node's own totals for this block and what follows from them.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["value_pool_deltas", "fees", "subsidy"],
+            "properties": {
+              "value_pool_deltas": {
+                "description": "valuePools[*].valueDeltaZat of the block, by pool id.",
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["transparent", "sprout", "sapling", "orchard", "ironwood", "lockbox"],
+                "properties": {
+                  "transparent": {"$ref": "#/$defs/amount"},
+                  "sprout": {"$ref": "#/$defs/amount"},
+                  "sapling": {"$ref": "#/$defs/amount"},
+                  "orchard": {"$ref": "#/$defs/amount"},
+                  "ironwood": {"$ref": "#/$defs/amount"},
+                  "lockbox": {"$ref": "#/$defs/amount"}
+                }
+              },
+              "fees": {"description": "Sum of the fees of the block's transactions.", "$ref": "#/$defs/count"},
+              "subsidy": {"description": "Block subsidy at this height.", "$ref": "#/$defs/count"}
+            }
+          }
+        }
+      }
+    },
+    "previous_transactions": {
+      "description": "Evidence for transparent inputs: `getrawtransaction <txid> 1` of every transaction an evidence block spends from.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["txid", "block_height", "block_hash", "evidence"],
+        "properties": {
+          "txid": {"$ref": "#/$defs/hex64"},
+          "block_height": {"$ref": "#/$defs/count"},
+          "block_hash": {"$ref": "#/$defs/hex64"},
+          "evidence": {"$ref": "#/$defs/file"}
+        }
+      }
+    },
+    "cases": {
+      "description": "One case per transaction of every evidence block.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "txid", "block_height", "block_hash", "index", "version", "shapes", "description", "old_code", "previous_outputs", "expected", "before_observed", "transformer_observed", "references"],
+        "properties": {
+          "id": {"description": "<block height>/<position in the block>.", "type": "string", "pattern": "^[0-9]+/[0-9]+$"},
+          "txid": {"$ref": "#/$defs/hex64"},
+          "block_height": {"$ref": "#/$defs/count"},
+          "block_hash": {"$ref": "#/$defs/hex64"},
+          "index": {"description": "Position of the transaction in its block, from 0.", "$ref": "#/$defs/count"},
+          "version": {"description": "Transaction version.", "type": "integer", "minimum": 1},
+          "shapes": {"description": "The shapes this transaction has (docs/DATASET.md gives the rule for each). Checked against the evidence on every run.", "type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "description": {"type": "string", "minLength": 1},
+          "old_code": {
+            "description": "Whether the old revision is expected to report other values than the expected ones, and why.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["differs", "not_read", "why"],
+            "properties": {
+              "differs": {"type": "boolean"},
+              "not_read": {
+                "description": "The balances the old revision never reads; both zero when it does not differ.",
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["orchard", "ironwood"],
+                "properties": {"orchard": {"$ref": "#/$defs/amount"}, "ironwood": {"$ref": "#/$defs/amount"}}
+              },
+              "why": {"type": "string", "minLength": 1}
+            }
+          },
+          "previous_outputs": {
+            "description": "The transparent outputs this transaction spends, with their values.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["txid", "index", "value"],
+              "properties": {"txid": {"$ref": "#/$defs/hex64"}, "index": {"$ref": "#/$defs/count"}, "value": {"$ref": "#/$defs/count"}}
+            }
+          },
+          "expected": {"$ref": "#/$defs/accounting"},
+          "before_observed": {"$ref": "#/$defs/observed"},
+          "transformer_observed": {
+            "description": "The coinjoin flag GraphSense's transformer computes for this transaction, per revision. An observation, not a truth.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["before_coinjoin", "after_coinjoin"],
+            "properties": {"before_coinjoin": {"type": "boolean"}, "after_coinjoin": {"type": "boolean"}}
+          },
+          "references": {"description": "Public statements about this transaction made elsewhere.", "type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "hex64": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "hex40": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "amount": {"description": "Signed amount in zatoshi.", "type": "integer"},
+    "count": {"description": "Non-negative integer.", "type": "integer", "minimum": 0},
+    "amounts": {"description": "Amounts in ascending order.", "type": "array", "items": {"type": "integer", "minimum": 1}},
+    "timestamp": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "file": {
+      "description": "One evidence file.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capture", "path", "sha256", "bytes", "content_sha256", "content_bytes"],
+      "properties": {
+        "capture": {"description": "Key into `captures`.", "type": "string", "minLength": 1},
+        "path": {"description": "Path in the repository, with forward slashes.", "type": "string", "pattern": "^evidence/[A-Za-z0-9._/-]+\\.json\\.gz$"},
+        "sha256": {"description": "Checksum of the stored (compressed) file.", "$ref": "#/$defs/hex64"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "content_sha256": {"description": "Checksum of the decompressed content: the bytes GraphSense is given.", "$ref": "#/$defs/hex64"},
+        "content_bytes": {"type": "integer", "minimum": 1},
+        "git_blob": {"description": "Git blob id of the stored file; for a reused file it equals the blob id in its origin repository.", "$ref": "#/$defs/hex40"},
+        "captured_at_utc": {"$ref": "#/$defs/timestamp"},
+        "rpc": {
+          "description": "The JSON-RPC call whose result this file holds.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "params"],
+          "properties": {"method": {"enum": ["getblock", "getrawtransaction"]}, "params": {"type": "array", "items": {"type": ["string", "integer"]}}}
+        }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "node", "network", "encoding"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1},
+        "node": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["implementation", "version", "version_source"],
+          "properties": {
+            "implementation": {"type": "string", "minLength": 1},
+            "version": {"type": "string", "minLength": 1},
+            "version_source": {"description": "How the node version is known.", "type": "string", "minLength": 1},
+            "subversion": {"type": "string"},
+            "protocol_version": {"type": "integer"}
+          }
+        },
+        "network": {"description": "`chain` as the node reports it.", "const": "main"},
+        "encoding": {"description": "How the stored bytes relate to what the node sent.", "type": "string", "minLength": 1},
+        "captured_from_utc": {"$ref": "#/$defs/timestamp"},
+        "captured_to_utc": {"$ref": "#/$defs/timestamp"},
+        "capture_time_note": {"type": "string"},
+        "origin": {
+          "description": "For reused evidence: where the files come from.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "commit", "directory", "license", "copyright", "introduced_by"],
+          "properties": {
+            "repository": {"type": "string"},
+            "tag": {"type": "string"},
+            "commit": {"$ref": "#/$defs/hex40"},
+            "directory": {"type": "string"},
+            "license": {"type": "string"},
+            "copyright": {"type": "string"},
+            "introduced_by": {"type": "string"}
+          }
+        }
+      }
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "distribution", "version", "git", "wheel", "package_tree_sha256", "package_file_count", "files", "locks"],
+      "properties": {
+        "role": {"type": "string", "minLength": 1},
+        "distribution": {"const": "graphsense-lib"},
+        "version": {"type": "string", "minLength": 1},
+        "git": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "commit"],
+          "properties": {"repository": {"type": "string"}, "tag": {"type": "string"}, "commit": {"$ref": "#/$defs/hex40"}}
+        },
+        "wheel": {
+          "description": "The release file on PyPI.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["filename", "sha256", "bytes", "url"],
+          "properties": {"filename": {"type": "string"}, "sha256": {"$ref": "#/$defs/hex64"}, "bytes": {"type": "integer", "minimum": 1}, "url": {"type": "string"}}
+        },
+        "package_tree_sha256": {"description": "Checksum over every file of the graphsenselib package (docs/METHOD.md gives the definition). Compared with the imported code on every run.", "$ref": "#/$defs/hex64"},
+        "package_file_count": {"type": "integer", "minimum": 1},
+        "files": {
+          "description": "The source files that do the accounting, by path inside the package.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sha256", "git_blob"],
+            "properties": {"sha256": {"$ref": "#/$defs/hex64"}, "git_blob": {"$ref": "#/$defs/hex40"}}
+          }
+        },
+        "locks": {
+          "description": "The hash-locked requirement files for this revision's environment.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["default", "transformer"],
+          "properties": {"default": {"$ref": "#/$defs/lock"}, "transformer": {"$ref": "#/$defs/lock"}}
+        }
+      }
+    },
+    "lock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {"path": {"type": "string"}, "sha256": {"$ref": "#/$defs/hex64"}}
+    },
+    "accounting": {
+      "description": "The correct accounting of a transaction, derived from the node's integer fields.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_coinbase", "transparent_input", "transparent_output", "sprout_value_balance", "sapling_value_balance", "orchard_value_balance", "ironwood_value_balance", "shielded_inputs", "shielded_outputs", "input_count", "output_count", "total_input", "total_output", "fee"],
+      "properties": {
+        "is_coinbase": {"type": "boolean"},
+        "transparent_input": {"description": "Sum of the values of the transparent outputs spent.", "$ref": "#/$defs/count"},
+        "transparent_output": {"description": "Sum of the values of the transparent outputs created.", "$ref": "#/$defs/count"},
+        "sprout_value_balance": {"description": "Sum of vpub_new minus sum of vpub_old. Positive: value left the Sprout pool.", "$ref": "#/$defs/amount"},
+        "sapling_value_balance": {"description": "valueBalanceZat of the transaction. Positive: value left the Sapling pool.", "$ref": "#/$defs/amount"},
+        "orchard_value_balance": {"description": "orchard.valueBalanceZat. Positive: value left the Orchard pool.", "$ref": "#/$defs/amount"},
+        "ironwood_value_balance": {"description": "ironwood.valueBalanceZat. Positive: value left the Ironwood pool.", "$ref": "#/$defs/amount"},
+        "shielded_inputs": {"description": "Value leaving a pool, one entry per leg, ascending.", "$ref": "#/$defs/amounts"},
+        "shielded_outputs": {"description": "Value entering a pool, one entry per leg, ascending.", "$ref": "#/$defs/amounts"},
+        "input_count": {"description": "Transparent inputs plus shielded inputs.", "$ref": "#/$defs/count"},
+        "output_count": {"description": "Transparent outputs plus shielded outputs.", "$ref": "#/$defs/count"},
+        "total_input": {"description": "transparent_input plus the shielded inputs.", "$ref": "#/$defs/count"},
+        "total_output": {"description": "transparent_output plus the shielded outputs.", "$ref": "#/$defs/count"},
+        "fee": {"description": "total_input minus total_output; 0 for a coinbase transaction.", "$ref": "#/$defs/count"}
+      }
+    },
+    "observed": {
+      "description": "What the old revision reported when the dataset was made. An observation, not a truth.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_coinbase", "transparent_input", "transparent_output", "shielded_inputs", "shielded_outputs", "input_count", "output_count", "total_input", "total_output", "fee"],
+      "properties": {
+        "is_coinbase": {"type": "boolean"},
+        "transparent_input": {"$ref": "#/$defs/count"},
+        "transparent_output": {"$ref": "#/$defs/count"},
+        "shielded_inputs": {"$ref": "#/$defs/amounts"},
+        "shielded_outputs": {"$ref": "#/$defs/amounts"},
+        "input_count": {"$ref": "#/$defs/count"},
+        "output_count": {"$ref": "#/$defs/count"},
+        "total_input": {"$ref": "#/$defs/count"},
+        "total_output": {"$ref": "#/$defs/count"},
+        "fee": {"description": "The old revision can report a negative fee.", "$ref": "#/$defs/amount"}
+      }
+    }
+  }
+}

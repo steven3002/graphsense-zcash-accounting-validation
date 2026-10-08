@@ -1,0 +1,4832 @@
+{
+ "manifest_schema_version": 1,
+ "dataset": {
+  "name": "graphsense-zcash-accounting-validation",
+  "version": "1.0.0",
+  "date": "2026-10-06",
+  "network": "zcash-mainnet",
+  "description": "Real Zcash mainnet transactions with known-correct accounting, for comparing graphsense-lib before and after its correction of Orchard and Ironwood value balances. Ten blocks, every transaction of each block, and every earlier transaction whose transparent outputs they spend.",
+  "changelog": [
+   {
+    "version": "1.0.0",
+    "date": "2026-10-06",
+    "changes": [
+     "First dataset: 10 blocks, 47 transactions, 43 previous transactions.",
+     "Seven blocks are the mainnet test fixtures of graphsense-lib (pull request #163), reused unchanged.",
+     "Added blocks 1687119, 1687143 and 3438010, and the previous transactions, captured from Zebra 6.4.2."
+    ]
+   }
+  ]
+ },
+ "revisions": {
+  "before": {
+   "role": "The last graphsense-lib release without the correction of Orchard and Ironwood value balances.",
+   "distribution": "graphsense-lib",
+   "version": "2.16.3",
+   "git": {
+    "repository": "https://github.com/graphsense/graphsense-lib",
+    "tag": "v2.16.3",
+    "commit": "c02cbdb544fe25daf4bef5d4a14cb455608253f3"
+   },
+   "wheel": {
+    "filename": "graphsense_lib-2.16.3-py3-none-any.whl",
+    "sha256": "0b11632b5fd55fd03f1233410eba742b34afac6aa1a9321854ec5bc6a5b2f32b",
+    "bytes": 1204292,
+    "url": "https://files.pythonhosted.org/packages/f0/3f/3a88950d8e7cd7a14c358bbddc45c9a6a683f959f5b5060c380a7387976c/graphsense_lib-2.16.3-py3-none-any.whl"
+   },
+   "package_tree_sha256": "4bb3029346d707d19d9c63a53a60ec1c27a11066d0b782d5451fe751e09132c4",
+   "package_file_count": 354,
+   "files": {
+    "graphsenselib/ingest/rpc_utxo.py": {
+     "sha256": "91dc581c52474ccc7c16491902b79d04a45be408ed27506569eab13ced55e6b2",
+     "git_blob": "1ad7ca79e1e3c14dd34d078f472b51435802d273"
+    },
+    "graphsenselib/ingest/rpc_eth.py": {
+     "sha256": "467822eb5064cbc3d3b3dabb615f27ac005abd813618b533729ccc4cacff930d",
+     "git_blob": "044d24009345fcc01fccd89b7606fb0617729013"
+    },
+    "graphsenselib/utils/pubkey_to_address.py": {
+     "sha256": "25f4908f95e197e058f9ca235af69a2677bfd9832bf1a3b74c3639e6286fbe1c",
+     "git_blob": "b7330be5a8cf4ec25feda69cfb9b897e71472a3e"
+    },
+    "graphsenselib/ingest/utxo.py": {
+     "sha256": "5f676cd2d91c466fd47a01c5e1ef978684bd4bb8fcba50c624f7dd2afbdb273c",
+     "git_blob": "8f927d5262eac20ac6cbf68acdd4c71193a4a407"
+    },
+    "graphsenselib/ingest/transform.py": {
+     "sha256": "38ab7237e3cabd40155a9c2575fefe6b9c8530c79d1595f07631c2e496ee4684",
+     "git_blob": "f27dbe31c59bf52c0714dd28970c0dc92cf863a2"
+    }
+   },
+   "locks": {
+    "default": {
+     "path": "locks/before.txt",
+     "sha256": "07098d0977e850936c39324ab68a29d9c3d4b51636c991d9ca8738f3d702271a"
+    },
+    "transformer": {
+     "path": "locks/before-transformer.txt",
+     "sha256": "c823a30e23b0dba0a8827d40579a9ae862185aa71264543da83bd8eeb973d15b"
+    }
+   }
+  },
+  "after": {
+   "role": "The first graphsense-lib release with the correction (pull request #163).",
+   "distribution": "graphsense-lib",
+   "version": "2.16.4",
+   "git": {
+    "repository": "https://github.com/graphsense/graphsense-lib",
+    "tag": "v2.16.4",
+    "commit": "411b987a0f246943d4ee70421f43b17a3cba8f8c"
+   },
+   "wheel": {
+    "filename": "graphsense_lib-2.16.4-py3-none-any.whl",
+    "sha256": "f60aa5de21faae27e0a04e4f8ea31fdfd5d676e9fedc7e1e03805cecc9f977d7",
+    "bytes": 1206819,
+    "url": "https://files.pythonhosted.org/packages/87/a4/f9d6ecdbc41a7c3d85e0c89baa68571fc514c466240c4315a4808477aa05/graphsense_lib-2.16.4-py3-none-any.whl"
+   },
+   "package_tree_sha256": "675521888b904da1b953afe786334b762098d96df67c8c2392d1467d0d2f4b6f",
+   "package_file_count": 353,
+   "files": {
+    "graphsenselib/ingest/rpc_utxo.py": {
+     "sha256": "e694c87787d7f6b82fc19dd62f6b64b1d998d63cbec61bcc9dac08749ff707ba",
+     "git_blob": "63f5453950251f15d4a909c7a7eff556adf4dbbc"
+    },
+    "graphsenselib/ingest/rpc_eth.py": {
+     "sha256": "467822eb5064cbc3d3b3dabb615f27ac005abd813618b533729ccc4cacff930d",
+     "git_blob": "044d24009345fcc01fccd89b7606fb0617729013"
+    },
+    "graphsenselib/utils/pubkey_to_address.py": {
+     "sha256": "25f4908f95e197e058f9ca235af69a2677bfd9832bf1a3b74c3639e6286fbe1c",
+     "git_blob": "b7330be5a8cf4ec25feda69cfb9b897e71472a3e"
+    },
+    "graphsenselib/ingest/utxo.py": {
+     "sha256": "5f676cd2d91c466fd47a01c5e1ef978684bd4bb8fcba50c624f7dd2afbdb273c",
+     "git_blob": "8f927d5262eac20ac6cbf68acdd4c71193a4a407"
+    },
+    "graphsenselib/ingest/transform.py": {
+     "sha256": "38ab7237e3cabd40155a9c2575fefe6b9c8530c79d1595f07631c2e496ee4684",
+     "git_blob": "f27dbe31c59bf52c0714dd28970c0dc92cf863a2"
+    }
+   },
+   "locks": {
+    "default": {
+     "path": "locks/after.txt",
+     "sha256": "4e7fcc38a5d672e42a5c4e9af62dc2392c7f53db2a627c68acbfbe3fa7a779c8"
+    },
+    "transformer": {
+     "path": "locks/after-transformer.txt",
+     "sha256": "352d980c63bf14689fed5168a06229a3f31b8674e6a194ce392a0d643421858b"
+    }
+   }
+  }
+ },
+ "captures": {
+  "graphsense-lib-fixtures": {
+   "description": "Mainnet test fixtures of graphsense-lib, contributed with its pull request #163 and reused here byte for byte.",
+   "node": {
+    "implementation": "Zebra",
+    "version": "6.3.0",
+    "version_source": "Stated in the description of graphsense-lib pull request #163. The files show the byte order of Orchard and Ironwood anchors that Zebra used before 6.4.0."
+   },
+   "network": "main",
+   "encoding": "The result member of `getblock <height> 2`, written again by a JSON library: separators are ', ' and ': ', and some decimal numbers are spelled in exponent form. Every number denotes the same value as in the node's own output.",
+   "capture_time_note": "Not recorded by the origin. The gzip headers of the seven files carry times between 2026-09-12T02:58:47Z and 2026-09-12T07:34:48Z.",
+   "origin": {
+    "repository": "https://github.com/graphsense/graphsense-lib",
+    "tag": "v2.16.4",
+    "commit": "411b987a0f246943d4ee70421f43b17a3cba8f8c",
+    "directory": "tests/ingest/resources",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2022 GraphSense",
+    "introduced_by": "graphsense-lib pull request #163"
+   }
+  },
+  "zebra-6.4.2": {
+   "description": "Captured for this dataset: all ten blocks and the 43 previous transactions.",
+   "node": {
+    "implementation": "Zebra",
+    "version": "6.4.2",
+    "version_source": "`getinfo` of the node at capture time.",
+    "subversion": "/Zebra:6.4.2/",
+    "protocol_version": 170160
+   },
+   "network": "main",
+   "encoding": "The bytes of the result member of the JSON-RPC response, exactly as the node sent them.",
+   "captured_from_utc": "2026-10-06T10:32:48Z",
+   "captured_to_utc": "2026-10-06T10:33:01Z"
+  }
+ },
+ "capture_differences_allowed": [
+  {
+   "key": "confirmations",
+   "parents": null,
+   "rule": "ignored",
+   "reason": "The number of confirmations grows with every new block. GraphSense does not read it."
+  },
+  {
+   "key": "anchor",
+   "parents": [
+    "orchard",
+    "ironwood"
+   ],
+   "rule": "byte-reversed",
+   "reason": "Zebra prints the anchor of an Orchard or Ironwood bundle in the opposite byte order since version 6.4.0. GraphSense does not read it."
+  }
+ ],
+ "required_shapes": [
+  "shielding:sapling",
+  "shielding:orchard",
+  "shielding:ironwood",
+  "unshielding:sapling",
+  "unshielding:orchard",
+  "unshielding:ironwood",
+  "fully-shielded-fee",
+  "fully-shielded-fee:sapling",
+  "fully-shielded-fee:orchard",
+  "fully-shielded-fee:ironwood",
+  "sapling+orchard",
+  "ironwood",
+  "three-pool",
+  "cross-pool",
+  "transparent-only",
+  "sprout",
+  "coinbase",
+  "shielded-coinbase"
+ ],
+ "blocks": [
+  {
+   "height": 600000,
+   "hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "transaction_count": 11,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_600000.json.gz",
+     "sha256": "7a0272a4c9e529d899b32bf0224fc777a50a06018a26dbde72a7df5f19c4fc4f",
+     "bytes": 28940,
+     "content_sha256": "5dee6d91c8fabbdb89eef65ce0cefc4cd1c3a808ab99ae3db382d7174bdab617",
+     "content_bytes": 89942,
+     "git_blob": "78b19a42a50c91b8dbdeb52a4fbf5b6545ba1dc3"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_600000.json.gz",
+     "sha256": "f91b4b93571035ee1db83a83268bbd373bed0c0ac0e3c285f2e6036d7b113d87",
+     "bytes": 29157,
+     "content_sha256": "7e3a986275f044c9ca0157616dae3e3a26820104b490ebac0ed5cc9b9caa11e4",
+     "content_bytes": 88804,
+     "git_blob": "77c8829326bbdcb9e3f9106f926ee451b95e8b80",
+     "captured_at_utc": "2026-10-06T10:32:48Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "600000",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "3268692740ad890bbeca29919354674fee3b1359b05eddcc2a3c7a0cf253ef31",
+    "8a6f840beb2962e90fe71458170bd0b59db0c7a4800ec1c1c50fb22bd2b2746c",
+    "d4e944af7819a3bd6aaf0a111ae719dd35f2eca41ceb013678ec0b1a60252889",
+    "e40a8c28d99f4687b538362899303622e6bed212b13ab0388d7014ac0899d12a",
+    "fd829d593bb5c3b6f852eaabc1b73206ebdbf0e6120a20926e809b44f486d845"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 1250060000,
+     "sprout": -18443000000,
+     "sapling": 18442940000,
+     "orchard": 0,
+     "ironwood": 0,
+     "lockbox": 0
+    },
+    "fees": 73780,
+    "subsidy": 1250000000
+   }
+  },
+  {
+   "height": 1687119,
+   "hash": "0000000001991db51d39d17fd626a07f2f0b44aaf5c0e831519ebe457eeb671b",
+   "transaction_count": 1,
+   "evidence": [
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_1687119.json.gz",
+     "sha256": "579e831697cfc3292251b940ca751c68cf3076c60f8e61cf5afe7a6a5ee495fa",
+     "bytes": 4482,
+     "content_sha256": "41a03783f97cd1f725b3eff435ff18bbdc7822d2c274ae86dbd1f8dd528bf601",
+     "content_bytes": 10405,
+     "git_blob": "42ebd4443647953b802661adb5c8b2cace06f9ff",
+     "captured_at_utc": "2026-10-06T10:32:48Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "1687119",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 62500000,
+     "sprout": 0,
+     "sapling": 250000000,
+     "orchard": 0,
+     "ironwood": 0,
+     "lockbox": 0
+    },
+    "fees": 0,
+    "subsidy": 312500000
+   }
+  },
+  {
+   "height": 1687143,
+   "hash": "00000000020252abdf313f51b343931cabfa8c07a48ca0effdb450158b1949c2",
+   "transaction_count": 2,
+   "evidence": [
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_1687143.json.gz",
+     "sha256": "1fb3ffe63cf44c26cd438b82d37a04dc6074d0dcedf82dae7eae128072a4a4ee",
+     "bytes": 14866,
+     "content_sha256": "78ddd9561707e375c887793d589a42b31d645113efe97eb4404728027d12789d",
+     "content_bytes": 44560,
+     "git_blob": "6c3d375f6b8ce6870e3ddb6e6d4d9a9bafaf9eed",
+     "captured_at_utc": "2026-10-06T10:32:48Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "1687143",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 322501000,
+     "sprout": 0,
+     "sapling": 0,
+     "orchard": -10001000,
+     "ironwood": 0,
+     "lockbox": 0
+    },
+    "fees": 1000,
+    "subsidy": 312500000
+   }
+  },
+  {
+   "height": 1687194,
+   "hash": "00000000005cdacbf9670c4aef2b7a7cf0db62fd74eab9ff320e6b1c8c66c8bf",
+   "transaction_count": 5,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_1687194.json.gz",
+     "sha256": "b497a4297ed2b8cc75527fc3d3471df52aa7b33ac509bc847f141758da962001",
+     "bytes": 25058,
+     "content_sha256": "44eddca8191a8a2554291af2d11f212185fcd82cacffbd65abe5025e73997c79",
+     "content_bytes": 88663,
+     "git_blob": "fed7138b2d51a06e5ac6219615d60b2dad1b675d"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_1687194.json.gz",
+     "sha256": "c4afbf51926d141298e26eb13e5181a160613d4e488bd2b3e2032ea933a8eb78",
+     "bytes": 25334,
+     "content_sha256": "89d1ab813c597765c8ef0f70205d3c237a2d79b83f44864330d84a8e3ca03527",
+     "content_bytes": 87042,
+     "git_blob": "be1b79435b958aa0f57ee4b89d62999a8a0598b8",
+     "captured_at_utc": "2026-10-06T10:32:48Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "1687194",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+    "373d2af92e40d7d6351afd67e974f03cd418a7d7924a5da5d22a87001d3cf6f8",
+    "580fad3d147ea7cfffdd705f0384c38f71f58a53a60dacdcfa7f1235dd29f73b",
+    "8773c6d171329d77f84cf35059cf9c8a2dd248758cbe3d8bed0f4527e1724fe8",
+    "9890ddd7593ad9b98e50cfb9469c2c500fe18ce2e1a3596442b250fa4594194f",
+    "a0193b0e95d93e76faef9ae067c97f8f77ad56803a5712b49412f4a037216763",
+    "f07efb961b7de0c2d69e38cfea24d644ae30ea22b983e83afa07a9101c35a743"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 312501000,
+     "sprout": 0,
+     "sapling": -89000,
+     "orchard": 88000,
+     "ironwood": 0,
+     "lockbox": 0
+    },
+    "fees": 15583,
+    "subsidy": 312500000
+   }
+  },
+  {
+   "height": 2501409,
+   "hash": "00000000018c04af07a9d5472e4dcb538fd1608a7c36db9c2ff2686acd2d18ee",
+   "transaction_count": 4,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_2501409.json.gz",
+     "sha256": "b380c5ba14b2379da0aed4ac3f817b6ed8b272e93f9c9b2d4ecc29f5983cae2d",
+     "bytes": 38060,
+     "content_sha256": "c1ef362087a793ba7f71365e1a0b59be8b5c9d3d5550ffb785f45f0d4b2baa11",
+     "content_bytes": 136395,
+     "git_blob": "e65a26975854e7aab47bb27b87db21da2dcb82b9"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_2501409.json.gz",
+     "sha256": "f7665966cd998ff111be201ba1cd1aeef711e6f469f2273a51a6d2f05506fae3",
+     "bytes": 38063,
+     "content_sha256": "9054ea1bc9f53c48b9b75ecc3240a3b73f146c4b2a091cc0b52a0ab3980028f9",
+     "content_bytes": 135375,
+     "git_blob": "bca60ded63d673a5b0d700a044e896dc9a282fc1",
+     "captured_at_utc": "2026-10-06T10:32:49Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "2501409",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+    "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+    "a87cdb25245e357d9d15a2a93aa90d60cd2a82dfbae75475ecef9ec1438efd06",
+    "fa436b021b15c9ad965ea25e53acb18622db1219dd4fc8020734db42bef8a4ef"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": -50498000,
+     "sprout": 0,
+     "sapling": 0,
+     "orchard": 362998000,
+     "ironwood": 0,
+     "lockbox": 0
+    },
+    "fees": 12000,
+    "subsidy": 312500000
+   }
+  },
+  {
+   "height": 3438010,
+   "hash": "000000000029b042d36389040f449455eddd4831ae9b058849cce4a7c3612481",
+   "transaction_count": 4,
+   "evidence": [
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_3438010.json.gz",
+     "sha256": "b9b8a0177aedbe18b857fcbb37279f006da319a9b8a7e7d80c2615f05403478f",
+     "bytes": 28976,
+     "content_sha256": "58f2c09524b6cb2ecf7f2ae92e0e0e1c046db6eb3e58ec47a477d0975e6bc5d0",
+     "content_bytes": 87169,
+     "git_blob": "c3798ee14e2c3466c6afcd04c0fc9c4c6277af6d",
+     "captured_at_utc": "2026-10-06T10:32:49Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "3438010",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 11142988289,
+     "sprout": 0,
+     "sapling": -10995078541,
+     "orchard": 0,
+     "ironwood": -10409748,
+     "lockbox": 18750000
+    },
+    "fees": 70000,
+    "subsidy": 156250000
+   }
+  },
+  {
+   "height": 3442130,
+   "hash": "0000000000606a295babe75433374efde94a7e989ef58087dc13dbef72d5e7e2",
+   "transaction_count": 2,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_3442130.json.gz",
+     "sha256": "d644b7a8c496463d321eefc0384be8dc59273d965c95fa1d6194a3c14c6e74e5",
+     "bytes": 5213,
+     "content_sha256": "fc9df6afa0222542ca1bdec999485af23596dc396831a322030681853876933c",
+     "content_bytes": 13319,
+     "git_blob": "3068eb28d11525517ebfe62281a239dfcba02526"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_3442130.json.gz",
+     "sha256": "4d2add06c3742cc83370bb88804204a7b6de3b7ae8da302bff1f42140a0a7ca5",
+     "bytes": 5167,
+     "content_sha256": "2118f35f7a1ff5193f663a799269b71884cdd70959718f8b8ef8243244c85c23",
+     "content_bytes": 13007,
+     "git_blob": "31fdbdb09516a34cf4c128281c6d75aca38ddc2c",
+     "captured_at_utc": "2026-10-06T10:32:49Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "3442130",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "bae8c7aca322619a554640da7351426ce99341a95a974015bb7b0fb6c2c9a11b",
+    "eaade029f99936d10862f4c6613e7a1207c5f38b1b4595d08ee098201156c095"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": -2683500000,
+     "sprout": 0,
+     "sapling": 2821000000,
+     "orchard": 0,
+     "ironwood": 0,
+     "lockbox": 18750000
+    },
+    "fees": 15000,
+    "subsidy": 156250000
+   }
+  },
+  {
+   "height": 3442400,
+   "hash": "00000000000e7e765c75d84472c63e9ad87b02ce6dc361c0869a4099b4608936",
+   "transaction_count": 3,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_3442400.json.gz",
+     "sha256": "047ffc997d732615d0dfc1c686964837cbf4f6f383e3cebe3a8ea251c688e2ca",
+     "bytes": 23046,
+     "content_sha256": "175095b5ae917d04082a7aa63ba84e8f60cca496c2d87b80bf99d549958f7f94",
+     "content_bytes": 68409,
+     "git_blob": "1637982bb415f09e472946766bc5ea98560e4e56"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_3442400.json.gz",
+     "sha256": "11f64e77ff83fceaed5e8038bd255018f225aad9fde0f30c576c757cacd76ec9",
+     "bytes": 23020,
+     "content_sha256": "41f4201777c44bbf332ad5885552e310542351b31a83a41338e1ad2f2221adc9",
+     "content_bytes": 67939,
+     "git_blob": "1bb41bd67f9443819b8c8adf061b56ddcb479eda",
+     "captured_at_utc": "2026-10-06T10:32:49Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "3442400",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "0982413a27b031ea711a57f247d65acafa7c4291bd7fb97fc9cb2d7e175d0c77"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 137404972,
+     "sprout": -400000000,
+     "sapling": 399960000,
+     "orchard": 0,
+     "ironwood": 135028,
+     "lockbox": 18750000
+    },
+    "fees": 55000,
+    "subsidy": 156250000
+   }
+  },
+  {
+   "height": 3463373,
+   "hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "transaction_count": 10,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_3463373.json.gz",
+     "sha256": "5366d65c16397998c061a36d8e559f239b1da97fb545e756e5fc767e1b68badc",
+     "bytes": 82055,
+     "content_sha256": "403d5d27a0af73abc0332d946bf7c9895ab7957ed57597415c73b5f942484947",
+     "content_bytes": 198734,
+     "git_blob": "24430d23388d52b04766a63708e940ee2d0d7907"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_3463373.json.gz",
+     "sha256": "85d8372471c5e15bfa7556b849047487bc156778d6f4cf49c370444b8fa6859b",
+     "bytes": 81937,
+     "content_sha256": "9961347ec70bb92cc92c57f2fb62f8a57fd4ddc5faa9a50ac3ddce08b19cef14",
+     "content_bytes": 197472,
+     "git_blob": "21b780f8fdbfa7632d934b26aaa9dea49e1cfdb0",
+     "captured_at_utc": "2026-10-06T10:32:49Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "3463373",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "102220ed5caa9ac69f051627eab195b4b1a9319005da8287f63af048db7fcff9",
+    "1af6a1708ed095cab7616df8aa233565a32715b968c01aa0383417d5f2ab0710",
+    "22a6b9967e89543e8ab719d8351dfd7814cd761588ad375731ccb0fd42b1d30b",
+    "2a266f8dca20bb0cfdd7441f13136031921319cd3e7c56bd4883d212121d81f3",
+    "40658968c551297c5e39a9fd8d1f790d838efd79bdde4e2ded92a61389ed1bee",
+    "55766cf3ae1309711b22e1b9db66b4c05bc02e45ee77447dba5442d34086b0f7",
+    "5d4acc1ed9ab243c78d3ee9ce6f2f2bf68097385dc8af67a4c2550b97b42ccf0",
+    "5e611b6383e91aff9cded8f15ba9ad9ce7be5f234948d5d2ce7bc8ee1176528f",
+    "5f3b458886e5605a6d9b88c25c4e24e1c112dcc44a4c33fa8801ccad9cd4f62c",
+    "6a0f189c1a0ca11a0fccd03bb72835c5ce32ba613dd75abdcbab16945b323af9",
+    "6a7b10b6c428335b239bdb211d16717d6a36e6e16018974cfc73a392a3c9c461",
+    "6b6e8f2ff02cb9bb83837eba4c7e8c49e6cf1c78785b7758d631341d37d846da",
+    "7e3d1ecbca322b462b4f88993b47eb24aaeef6e6dc16b6fb5ddea505ec661013",
+    "b08e28d98b79d79e88607a6d138f267d7473350e67e0f3fb205f0901f95839ec",
+    "b68bb4972e8e64e70d22f552c788bc4c253662d0417237cca451c195419e62f2",
+    "c951e3e1f025ac6c2b1c59cbe5dc6535a346a1e7cf5bd14bcc3df9e7cbeae1e3",
+    "cf4c8651f005625552db9c9cdc384cc6ca6ccaf695e1a11f59c683d4299c4249",
+    "d8d354622714a673b3d67e0dbb1f28d19df65b305a5a1574cd9e1c71e18ae01a",
+    "e7f06efb00c312b310c6cbe4472454f4afd5a9727eb795e201fa98b5cc87ade2",
+    "ee1713da30446fe4d4e08ea50ecc78d7c456b441c4eb928b460c4061c09e10fd",
+    "fbf8cbb158151fad35b8a232a78877a80395668062bc8b8ac2fa307b7617cbf8",
+    "fd88cc8a931e4d53f07a80182900db6e211b6d02898db602050a51e0395737e7"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": -1854849839,
+     "sprout": 0,
+     "sapling": 1878409839,
+     "orchard": -24898,
+     "ironwood": 113964898,
+     "lockbox": 18750000
+    },
+    "fees": 246000,
+    "subsidy": 156250000
+   }
+  },
+  {
+   "height": 3479000,
+   "hash": "0000000000461f792f5f915c6008d4c6e97b87ae6dda49c0edd8f96a0dc38098",
+   "transaction_count": 5,
+   "evidence": [
+    {
+     "capture": "graphsense-lib-fixtures",
+     "path": "evidence/graphsense-lib-fixtures/zcash_block_3479000.json.gz",
+     "sha256": "811ac16bc60f7a112f336667473a8ac2cea204548389d4f6aee73083b5b1963b",
+     "bytes": 77020,
+     "content_sha256": "8994cefedf13972d234be38706a83aabf9a73559ccb696b843499a4941457912",
+     "content_bytes": 183937,
+     "git_blob": "67d5eb19cca3d68d8e784355ca5ebd8fce7551d1"
+    },
+    {
+     "capture": "zebra-6.4.2",
+     "path": "evidence/zebra-6.4.2/block_3479000.json.gz",
+     "sha256": "ef773131de740f9166135bbeb7e590c3638604b3e1d379f282cfb83d277e9653",
+     "bytes": 77049,
+     "content_sha256": "297716ee5d9ebd509d6a60dacd7e23bd5948e01c63d28553dec287236dd0295b",
+     "content_bytes": 183253,
+     "git_blob": "7acff2f480e1217e6fcede82244c15eb5e894671",
+     "captured_at_utc": "2026-10-06T10:32:49Z",
+     "rpc": {
+      "method": "getblock",
+      "params": [
+       "3479000",
+       2
+      ]
+     }
+    }
+   ],
+   "previous_transactions": [
+    "217aa736eb0bc8d8fd5d8797631e06d09083f0bb7c0a3823dccc4ba77ca7e0c7",
+    "5e1825ed65aa5da49445c000b2b7b91b74d42fd70dce66fcd92279f72dfd2ddb"
+   ],
+   "expected": {
+    "value_pool_deltas": {
+     "transparent": 435442331,
+     "sprout": 0,
+     "sapling": 0,
+     "orchard": -1020000,
+     "ironwood": -296922331,
+     "lockbox": 18750000
+    },
+    "fees": 90000,
+    "subsidy": 156250000
+   }
+  }
+ ],
+ "previous_transactions": [
+  {
+   "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+   "block_height": 1687170,
+   "block_hash": "00000000006e936271aaa745288b617391c9d991359ef68ccef7719dc08c12bd",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b.json.gz",
+    "sha256": "8fd8280648039af7aee33947a6341d881d3b1dd14aed031ebacec81fbb58a3aa",
+    "bytes": 27265,
+    "content_sha256": "b33029ca518a0df8c098089cfbfdda674a5348f864cb4880a9b81fe44c296518",
+    "content_bytes": 98292,
+    "git_blob": "286696a8e8b62841c59091eec57c8b493367fd29",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "0982413a27b031ea711a57f247d65acafa7c4291bd7fb97fc9cb2d7e175d0c77",
+   "block_height": 3437733,
+   "block_hash": "0000000000155d8ecd5cc322d7cc2483a274ae418b301b7807beb0e92d89744e",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_0982413a27b031ea711a57f247d65acafa7c4291bd7fb97fc9cb2d7e175d0c77.json.gz",
+    "sha256": "8c70ce93e398dbe8d441ba1fb69974c8ca660c721e7ba89dea5a67f4981a8a76",
+    "bytes": 822,
+    "content_sha256": "685704c73465c14d528ffc1e0ae2e79650a4a84c47e65beb23be642af00fcea5",
+    "content_bytes": 1823,
+    "git_blob": "00a36f30b8ca9a0bca742a19e9a3f68225282385",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "0982413a27b031ea711a57f247d65acafa7c4291bd7fb97fc9cb2d7e175d0c77",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "102220ed5caa9ac69f051627eab195b4b1a9319005da8287f63af048db7fcff9",
+   "block_height": 3462961,
+   "block_hash": "0000000000534ca5f7b2fffdeeaa5e459975a8b7f1d98b3f19ef966eec70c34e",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_102220ed5caa9ac69f051627eab195b4b1a9319005da8287f63af048db7fcff9.json.gz",
+    "sha256": "6612b5175b66e6a311b13997aa685345a479194433748498480580d904571d4e",
+    "bytes": 800,
+    "content_sha256": "43a08afd9d83ede38fe0189034dfe52f2d54e167a054ff3ed524b8e8c409328e",
+    "content_bytes": 1654,
+    "git_blob": "0a0f303348d04eccc352de2c9eefaaf65855b5dc",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "102220ed5caa9ac69f051627eab195b4b1a9319005da8287f63af048db7fcff9",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+   "block_height": 2501157,
+   "block_hash": "00000000011ff911487436e2bacf8c5abdd239cf00f97f1f843c5106c61381f8",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d.json.gz",
+    "sha256": "c4b6749b9d9131d488ef3d648c2d558bfad90cbac4e8d8dacd56f9c8d3b58f39",
+    "bytes": 10336,
+    "content_sha256": "bcff2c545b214f899f78b60c1138138dae3ce2a96e23e1da3db56a5a180d23aa",
+    "content_bytes": 42814,
+    "git_blob": "08cf8df95e8f22cbba4460127856a02362d6fd7d",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "1af6a1708ed095cab7616df8aa233565a32715b968c01aa0383417d5f2ab0710",
+   "block_height": 3361999,
+   "block_hash": "00000000009924ba36e47e9a30c1000bc7724db629f79612cbe13c7519660f46",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_1af6a1708ed095cab7616df8aa233565a32715b968c01aa0383417d5f2ab0710.json.gz",
+    "sha256": "64915e34d20b616ce4444b5c668d28c5328dc8573ce2fa07b7d65e17de3cbe90",
+    "bytes": 9442,
+    "content_sha256": "81e46c0ad405d8186a43d4fa26db4afc018c721f0b502eaa5a91f8e5b0e10f35",
+    "content_bytes": 38122,
+    "git_blob": "1399ed8d49b67e2243b5372559a19ec77cfd3466",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "1af6a1708ed095cab7616df8aa233565a32715b968c01aa0383417d5f2ab0710",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "217aa736eb0bc8d8fd5d8797631e06d09083f0bb7c0a3823dccc4ba77ca7e0c7",
+   "block_height": 3478990,
+   "block_hash": "0000000000373cff82da82ef7766e44531a7f552127d064794bf8b9dd3886d51",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_217aa736eb0bc8d8fd5d8797631e06d09083f0bb7c0a3823dccc4ba77ca7e0c7.json.gz",
+    "sha256": "69af902a7d65851c2e631c54d4fb8a2bc03d8bfa92df43f5fe637cdb6c0ead7d",
+    "bytes": 8532,
+    "content_sha256": "41f62d4a2c47f48657cd4292f084cc5efe7c6f067674fb8b4b404dca2500055a",
+    "content_bytes": 26967,
+    "git_blob": "b0c653baa8dfb0a1169f2ddda1f4df42f0de2e22",
+    "captured_at_utc": "2026-10-06T10:33:01Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "217aa736eb0bc8d8fd5d8797631e06d09083f0bb7c0a3823dccc4ba77ca7e0c7",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "22a6b9967e89543e8ab719d8351dfd7814cd761588ad375731ccb0fd42b1d30b",
+   "block_height": 3463270,
+   "block_hash": "000000000071c04c371a5b29ade7fcf48208b51dd7b81cdb120f102c2b5850bb",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_22a6b9967e89543e8ab719d8351dfd7814cd761588ad375731ccb0fd42b1d30b.json.gz",
+    "sha256": "b2e6947725fa9e1072d266c2f6824f2a642899e120dadee40ca0ddac0be472fd",
+    "bytes": 782,
+    "content_sha256": "906dc1d4cefcc42ab7e55559dcf525e52121e9e4610261eb46335e5a5cc8ea6e",
+    "content_bytes": 1601,
+    "git_blob": "91c7e228259a3b8fdc5caf2709ae25a42fd7e311",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "22a6b9967e89543e8ab719d8351dfd7814cd761588ad375731ccb0fd42b1d30b",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "2a266f8dca20bb0cfdd7441f13136031921319cd3e7c56bd4883d212121d81f3",
+   "block_height": 3463369,
+   "block_hash": "000000000051e1215b8f95cb8b9b57dc16bf5d63d7f99006015d993a18b4c5e0",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_2a266f8dca20bb0cfdd7441f13136031921319cd3e7c56bd4883d212121d81f3.json.gz",
+    "sha256": "d44c9eb04a5f315873b2912c8ce1625f31efe411b76cc540c68a1ab2f0f6f7ee",
+    "bytes": 937,
+    "content_sha256": "189a9110a60c6ede3c9e806d237d74311200a2cd9a312463d80f18caef39927c",
+    "content_bytes": 2201,
+    "git_blob": "822be6fd74bac463c1633f5dd420cb985d2dbac0",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "2a266f8dca20bb0cfdd7441f13136031921319cd3e7c56bd4883d212121d81f3",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "3268692740ad890bbeca29919354674fee3b1359b05eddcc2a3c7a0cf253ef31",
+   "block_height": 599999,
+   "block_hash": "000000000045badd4ec08ebbdc43f453b04482d7e3ce17bf063c1d72384edcd1",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_3268692740ad890bbeca29919354674fee3b1359b05eddcc2a3c7a0cf253ef31.json.gz",
+    "sha256": "109bf09fa35d68a3bd74e87848b8f1803a0f04aa6b29e9a4b84b0b931bced619",
+    "bytes": 945,
+    "content_sha256": "3a3f265b08f0c6ba13751bff5af8233b17f75c767219e96600c8e3c8ede3d214",
+    "content_bytes": 2208,
+    "git_blob": "06f3c1e6c7481378fbf3d1db483cd5a5c057373e",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "3268692740ad890bbeca29919354674fee3b1359b05eddcc2a3c7a0cf253ef31",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "373d2af92e40d7d6351afd67e974f03cd418a7d7924a5da5d22a87001d3cf6f8",
+   "block_height": 1687165,
+   "block_hash": "000000000091520706b819a8416de62206cc3624a82c7fd696939d83968c7711",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_373d2af92e40d7d6351afd67e974f03cd418a7d7924a5da5d22a87001d3cf6f8.json.gz",
+    "sha256": "03e69b83d251edad6d257eab67eeae77c8dcd56812b6cd47d55327d276377d40",
+    "bytes": 5820,
+    "content_sha256": "58928b230223c3545833b644949efb1c1f4eb47b3a434e5885d894857038795a",
+    "content_bytes": 23727,
+    "git_blob": "505f3f1825e5c01ae1bdbc8db675629b294fd702",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "373d2af92e40d7d6351afd67e974f03cd418a7d7924a5da5d22a87001d3cf6f8",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "40658968c551297c5e39a9fd8d1f790d838efd79bdde4e2ded92a61389ed1bee",
+   "block_height": 3462619,
+   "block_hash": "000000000041cafaaa6d3fff3a3db5d8678eae4dd91e0f8b7b8fef7b8cca0a1b",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_40658968c551297c5e39a9fd8d1f790d838efd79bdde4e2ded92a61389ed1bee.json.gz",
+    "sha256": "3193140e655392540e7d38f95f610bae992f1840f211e7425b3924f780abcb94",
+    "bytes": 796,
+    "content_sha256": "caaf7be20ea936adf7d7c141bec18282f1944c8cd23f93ccf579dca721454fd9",
+    "content_bytes": 1631,
+    "git_blob": "a7acc58e9648983d9b65ef6c2858e887c37a0f30",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "40658968c551297c5e39a9fd8d1f790d838efd79bdde4e2ded92a61389ed1bee",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "55766cf3ae1309711b22e1b9db66b4c05bc02e45ee77447dba5442d34086b0f7",
+   "block_height": 3462262,
+   "block_hash": "00000000006aa629287be05cc6eddecb6cf3e7f4878a29524ad7b791c16808ef",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_55766cf3ae1309711b22e1b9db66b4c05bc02e45ee77447dba5442d34086b0f7.json.gz",
+    "sha256": "0a15f67fd9b6d80e6e3d2e6ca30eb21ddd995ba8f3fb9a4297b0d788afc2bef5",
+    "bytes": 800,
+    "content_sha256": "ea392bddeab59afa9231098d8ec66d0b7f09ab716e19ce01be30b6dca4c61fdf",
+    "content_bytes": 1661,
+    "git_blob": "22caca52c698c5db0ce3c6e3ed361355a0e4242c",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "55766cf3ae1309711b22e1b9db66b4c05bc02e45ee77447dba5442d34086b0f7",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "580fad3d147ea7cfffdd705f0384c38f71f58a53a60dacdcfa7f1235dd29f73b",
+   "block_height": 1687160,
+   "block_hash": "00000000016d436927cdf1094c41088af81ee3eeea53f680272927e37b8a4ac2",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_580fad3d147ea7cfffdd705f0384c38f71f58a53a60dacdcfa7f1235dd29f73b.json.gz",
+    "sha256": "d734a4e652f3ef8f5d422c404472dc739700804e508d4fc2c405f63325deffaa",
+    "bytes": 1262,
+    "content_sha256": "52d42cf6f3cc0ad2caec0b6b6223153df843eee1189b2a2037a5f5eee0472ebe",
+    "content_bytes": 3396,
+    "git_blob": "2d350707fdf1df39f6b357ee116de15b7a1e75a3",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "580fad3d147ea7cfffdd705f0384c38f71f58a53a60dacdcfa7f1235dd29f73b",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "5d4acc1ed9ab243c78d3ee9ce6f2f2bf68097385dc8af67a4c2550b97b42ccf0",
+   "block_height": 3463020,
+   "block_hash": "0000000000477bc650ada38611f115e591487f24f94c97423f873ea4f5d4262f",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_5d4acc1ed9ab243c78d3ee9ce6f2f2bf68097385dc8af67a4c2550b97b42ccf0.json.gz",
+    "sha256": "12c9c53e8b738d6a29edf7e015d8804e183e035493a9c66c76257420196b7dd9",
+    "bytes": 796,
+    "content_sha256": "0ab014e915040fc7c3659a7d353db66ed87d4c040e79cef7684d709e974854b4",
+    "content_bytes": 1647,
+    "git_blob": "4355def8507327a73741dbe50dcddbb636fb3ff0",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "5d4acc1ed9ab243c78d3ee9ce6f2f2bf68097385dc8af67a4c2550b97b42ccf0",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "5e1825ed65aa5da49445c000b2b7b91b74d42fd70dce66fcd92279f72dfd2ddb",
+   "block_height": 3478969,
+   "block_hash": "00000000000644485dd946b1c14d9e0b4c436c4e01088bea85c9f201e6a9f7e5",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_5e1825ed65aa5da49445c000b2b7b91b74d42fd70dce66fcd92279f72dfd2ddb.json.gz",
+    "sha256": "269e7564a045bced9b67003c0a53632a528ee6fdb46605308779d84dbbf8d918",
+    "bytes": 1361,
+    "content_sha256": "feff6029e77b10a8f230df7cfd7924b43aec7d4c340014b020213f42689e2a97",
+    "content_bytes": 3990,
+    "git_blob": "0c58524dd3f665619ab62d7019db9426eb3c3ac1",
+    "captured_at_utc": "2026-10-06T10:33:01Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "5e1825ed65aa5da49445c000b2b7b91b74d42fd70dce66fcd92279f72dfd2ddb",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "5e611b6383e91aff9cded8f15ba9ad9ce7be5f234948d5d2ce7bc8ee1176528f",
+   "block_height": 3463271,
+   "block_hash": "00000000005c33862029adfdc3d34f78d6193b0262dad5e09797e91badc01928",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_5e611b6383e91aff9cded8f15ba9ad9ce7be5f234948d5d2ce7bc8ee1176528f.json.gz",
+    "sha256": "ccb30e87533cff738bf5079937173d7b9aa6f6ea9c2a89d791ebb60bc5c9e271",
+    "bytes": 795,
+    "content_sha256": "b1fa64b3789225b35bec3fa320d11d0aa6a73489f195e94d446ce70bce54b295",
+    "content_bytes": 1655,
+    "git_blob": "e63eb791ebf718871adcfa936f3bea2a21a71c92",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "5e611b6383e91aff9cded8f15ba9ad9ce7be5f234948d5d2ce7bc8ee1176528f",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "5f3b458886e5605a6d9b88c25c4e24e1c112dcc44a4c33fa8801ccad9cd4f62c",
+   "block_height": 3462674,
+   "block_hash": "0000000000564b3c40a6368a8fb9aaffbaac37e79fe0f80a6edb3ad15ee3ab2f",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_5f3b458886e5605a6d9b88c25c4e24e1c112dcc44a4c33fa8801ccad9cd4f62c.json.gz",
+    "sha256": "dfd31f59947997b5aaa01310d3ecceccd253d09b718bb96fc8432da1068679fc",
+    "bytes": 930,
+    "content_sha256": "43c457fdf3c04cef51681ad9000d4490cd9f8fdacfc07ec09cd37242335c286d",
+    "content_bytes": 2203,
+    "git_blob": "f94c396053d4c6d7e3af3112a82d5a6aacc0ab8a",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "5f3b458886e5605a6d9b88c25c4e24e1c112dcc44a4c33fa8801ccad9cd4f62c",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "6a0f189c1a0ca11a0fccd03bb72835c5ce32ba613dd75abdcbab16945b323af9",
+   "block_height": 3462715,
+   "block_hash": "000000000053461d1831e9ff86be20668883681196f2ff3f6207cc7689af4d2e",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_6a0f189c1a0ca11a0fccd03bb72835c5ce32ba613dd75abdcbab16945b323af9.json.gz",
+    "sha256": "43058cdaf2ec6fe481283d81cc52c67d4f8d268cae24bcc4283b38f4b464752f",
+    "bytes": 801,
+    "content_sha256": "27b4b00f9e9fd9cc5d90f18b7754c0c812ade92a5ac6392ab3f3efdbe695d163",
+    "content_bytes": 1659,
+    "git_blob": "a8f4a68f5241b60d2336ba4590fdb38cd2a9c1ad",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "6a0f189c1a0ca11a0fccd03bb72835c5ce32ba613dd75abdcbab16945b323af9",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "6a7b10b6c428335b239bdb211d16717d6a36e6e16018974cfc73a392a3c9c461",
+   "block_height": 3463272,
+   "block_hash": "0000000000845a0d98c831929f6f7a3b12e12ef3f988835e01604f0073354432",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_6a7b10b6c428335b239bdb211d16717d6a36e6e16018974cfc73a392a3c9c461.json.gz",
+    "sha256": "f61dd5e110a985a15e71dad243458d974cc6b12f382c87011a929ea734b46448",
+    "bytes": 793,
+    "content_sha256": "bcfda8b17ff133af670470dac58728e25ec08b3d3d85567f9bbc0adcd950b016",
+    "content_bytes": 1643,
+    "git_blob": "0d97d959da08d218f0da0e48dc66cb72318d3ca1",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "6a7b10b6c428335b239bdb211d16717d6a36e6e16018974cfc73a392a3c9c461",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "6b6e8f2ff02cb9bb83837eba4c7e8c49e6cf1c78785b7758d631341d37d846da",
+   "block_height": 3463370,
+   "block_hash": "00000000001e540650b5853c35efce0201bb6bb20201fbda4e9db4e73fa23c36",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_6b6e8f2ff02cb9bb83837eba4c7e8c49e6cf1c78785b7758d631341d37d846da.json.gz",
+    "sha256": "231d009ef0cd2c2e5b2924eed901f59222dda68d7340ecc7dce51ab64c32e40e",
+    "bytes": 15771,
+    "content_sha256": "d41345446b761a0bdcba0f50b8423255790d9dd644345a676ae9c0384967ab54",
+    "content_bytes": 50732,
+    "git_blob": "3ddf182057124cd1811c4a7c8d6c9ce129a6c444",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "6b6e8f2ff02cb9bb83837eba4c7e8c49e6cf1c78785b7758d631341d37d846da",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "7e3d1ecbca322b462b4f88993b47eb24aaeef6e6dc16b6fb5ddea505ec661013",
+   "block_height": 3358614,
+   "block_hash": "0000000000b291c69de94daf2c92e7c7fb4df0694aa02c4d17bfd65adae3750b",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_7e3d1ecbca322b462b4f88993b47eb24aaeef6e6dc16b6fb5ddea505ec661013.json.gz",
+    "sha256": "5e4e241e91916bbd6fcf987df277611731c4bd1247a32bda745d9d9c62d1baa9",
+    "bytes": 7369,
+    "content_sha256": "a64b6cc8479a3091e53ae6ca4f07b4223158140d5510b7d7e2ab0c4c908a0d09",
+    "content_bytes": 29231,
+    "git_blob": "8b0423a37d1a967b8f02cdacb8ae31027c0982ca",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "7e3d1ecbca322b462b4f88993b47eb24aaeef6e6dc16b6fb5ddea505ec661013",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+   "block_height": 2501150,
+   "block_hash": "0000000000070e84c49134204809f05f1c81d0ca8828bd9af7000339458ebf91",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737.json.gz",
+    "sha256": "d4fa88f48cc559e4874f8cd047bbe9bb1a9edf34d40290a42e2dd3d8f8250661",
+    "bytes": 10869,
+    "content_sha256": "9f8c38242894ffe8b917d87aff11f1b2120c4bd8e1ca284d488f72a5654ae857",
+    "content_bytes": 44655,
+    "git_blob": "2411265d2386b199a4d9acb6b5a02a13891eb383",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "8773c6d171329d77f84cf35059cf9c8a2dd248758cbe3d8bed0f4527e1724fe8",
+   "block_height": 1687188,
+   "block_hash": "000000000177cbf8ecc7bafbea93f3682681b6754e4bc8dc7b4a088c96dbe086",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_8773c6d171329d77f84cf35059cf9c8a2dd248758cbe3d8bed0f4527e1724fe8.json.gz",
+    "sha256": "1ecc26b0654d87e88b0c062a6496ed981a3999315768427afac849bb5cdd6f90",
+    "bytes": 4500,
+    "content_sha256": "262074c0dc6a3d290f91564f11e9ba0ded4926d9b60459c61ff5bfdf8c9fe931",
+    "content_bytes": 17923,
+    "git_blob": "67e145cf1766c78af04fd7229e5528190d90f6c5",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "8773c6d171329d77f84cf35059cf9c8a2dd248758cbe3d8bed0f4527e1724fe8",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "8a6f840beb2962e90fe71458170bd0b59db0c7a4800ec1c1c50fb22bd2b2746c",
+   "block_height": 597539,
+   "block_hash": "00000000006c4f151f2f07af633a575675fba2ed9fe1c29367f1bf006a690877",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_8a6f840beb2962e90fe71458170bd0b59db0c7a4800ec1c1c50fb22bd2b2746c.json.gz",
+    "sha256": "07733d0b08dc38cd1047190849fd519a3e7db5c7965b3202d26e53acea683d31",
+    "bytes": 54484,
+    "content_sha256": "115b7dc48a2ae7b34315c0216090a6345fa279d37100621c9bdfdaff837049fa",
+    "content_bytes": 185981,
+    "git_blob": "dd20cf1d89847f7a0d7af68c71c5292058ea3a56",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "8a6f840beb2962e90fe71458170bd0b59db0c7a4800ec1c1c50fb22bd2b2746c",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "9890ddd7593ad9b98e50cfb9469c2c500fe18ce2e1a3596442b250fa4594194f",
+   "block_height": 1687157,
+   "block_hash": "0000000000fdb9c6dd32a599711207cb7cace10fc458d4deb5c6c2852c1020a8",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_9890ddd7593ad9b98e50cfb9469c2c500fe18ce2e1a3596442b250fa4594194f.json.gz",
+    "sha256": "cf2203035dee6e6b7da8f9c0a17f2801af1b086ee5b48e7230693ff45b766e5c",
+    "bytes": 5656,
+    "content_sha256": "a7b4047ec0ba81fc3cd87180646e2fb8c8fbfc0f3d900997dd92dc4038f73544",
+    "content_bytes": 23033,
+    "git_blob": "ecc36b5eeb257fcbc1820cc3fec11c4c17a0b611",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "9890ddd7593ad9b98e50cfb9469c2c500fe18ce2e1a3596442b250fa4594194f",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "a0193b0e95d93e76faef9ae067c97f8f77ad56803a5712b49412f4a037216763",
+   "block_height": 1687177,
+   "block_hash": "0000000000576041aaa3f96194bfc2ebbc094ce785749e91c5876caa4a8c7ef8",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_a0193b0e95d93e76faef9ae067c97f8f77ad56803a5712b49412f4a037216763.json.gz",
+    "sha256": "580b996865e7ec5bde94e03506f9904861f6cba8121f3b79d5ee2a690bd52bb6",
+    "bytes": 5619,
+    "content_sha256": "68c2bb8f9877a243548632aa34ab74824856f4ccd4c3b6d0d949699e70a3a7d5",
+    "content_bytes": 22677,
+    "git_blob": "2af39c3c05a5fcbf256a8b4c8f515d1aab0635ba",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "a0193b0e95d93e76faef9ae067c97f8f77ad56803a5712b49412f4a037216763",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "a87cdb25245e357d9d15a2a93aa90d60cd2a82dfbae75475ecef9ec1438efd06",
+   "block_height": 2501385,
+   "block_hash": "00000000000639a4a5ea27cb9bc695453b2df6361e9636b1d7ec26c61d2f93b7",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_a87cdb25245e357d9d15a2a93aa90d60cd2a82dfbae75475ecef9ec1438efd06.json.gz",
+    "sha256": "974d733193ad870531646b0f5354daf5f7ead16724d3caeabe7dea762cd484d9",
+    "bytes": 5056,
+    "content_sha256": "e08a013f195bea6bdc044592ea130fe878c29a681c6076588d29272f0b5f4163",
+    "content_bytes": 25467,
+    "git_blob": "2c2b1deab8ded1ab9faf72d9438c616922c289e1",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "a87cdb25245e357d9d15a2a93aa90d60cd2a82dfbae75475ecef9ec1438efd06",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "b08e28d98b79d79e88607a6d138f267d7473350e67e0f3fb205f0901f95839ec",
+   "block_height": 3462209,
+   "block_hash": "0000000000497cb34a91ae5932aec1853fe5a3ebe82bb85bd6b7b56e60d1b8ed",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_b08e28d98b79d79e88607a6d138f267d7473350e67e0f3fb205f0901f95839ec.json.gz",
+    "sha256": "d6a2ffefafd48a64ef17208c5137348f6d2f0cba4fc91d101c09b270f54fb0cc",
+    "bytes": 803,
+    "content_sha256": "e432c5333918a0f7a3b7eebd7182b2802c80ecc09955c574228ac5b6ddba94d0",
+    "content_bytes": 1654,
+    "git_blob": "3930401632dde8a3f043435ba6a8340600a32f8e",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "b08e28d98b79d79e88607a6d138f267d7473350e67e0f3fb205f0901f95839ec",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "b68bb4972e8e64e70d22f552c788bc4c253662d0417237cca451c195419e62f2",
+   "block_height": 3462513,
+   "block_hash": "0000000000429620b923b207af91be351deed9314f2f1138a8b0fd9064dc43d3",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_b68bb4972e8e64e70d22f552c788bc4c253662d0417237cca451c195419e62f2.json.gz",
+    "sha256": "b36d468f14bdeba8451fbb712972ec182c3684037bb3a55458d7d11ba4535630",
+    "bytes": 801,
+    "content_sha256": "323e0d9e7f87bd834667a3a8fd5e6a397d699076d4ccd6442a3ad573fd390494",
+    "content_bytes": 1659,
+    "git_blob": "7ad956290b7a72791e6a50145672635480aade4d",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "b68bb4972e8e64e70d22f552c788bc4c253662d0417237cca451c195419e62f2",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "bae8c7aca322619a554640da7351426ce99341a95a974015bb7b0fb6c2c9a11b",
+   "block_height": 3312221,
+   "block_hash": "00000000004cdef60f73a13497ac40899d20d0d0c5a162eb0dbde314f87f943b",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_bae8c7aca322619a554640da7351426ce99341a95a974015bb7b0fb6c2c9a11b.json.gz",
+    "sha256": "1f47a2cc83642aa67ded66443732c5f48b8b1e92ce9dfe4b1ec1a0e8f27b8703",
+    "bytes": 929,
+    "content_sha256": "40d43e5103bfa9a42cbcf3e809df2c937146d28a15c02dc459acde6727d71131",
+    "content_bytes": 2202,
+    "git_blob": "3da7023dafa51b42b6f45d0360e8794116ce9087",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "bae8c7aca322619a554640da7351426ce99341a95a974015bb7b0fb6c2c9a11b",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "c951e3e1f025ac6c2b1c59cbe5dc6535a346a1e7cf5bd14bcc3df9e7cbeae1e3",
+   "block_height": 3463142,
+   "block_hash": "00000000005311f705cb28c752482de4da79c97cc56f977fcbdf8aacb2382011",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_c951e3e1f025ac6c2b1c59cbe5dc6535a346a1e7cf5bd14bcc3df9e7cbeae1e3.json.gz",
+    "sha256": "1ba804ed049ebc5d66f7de78a982266c9fa80d3278b2133e695ec4770af876d9",
+    "bytes": 800,
+    "content_sha256": "b523d5045014643123e6fbdb89009cc5cc0fad79b4ca8ffd8f5e522487796ad0",
+    "content_bytes": 1658,
+    "git_blob": "93a167cbc5b678eb1747ecd6d58803664051df6e",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "c951e3e1f025ac6c2b1c59cbe5dc6535a346a1e7cf5bd14bcc3df9e7cbeae1e3",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "cf4c8651f005625552db9c9cdc384cc6ca6ccaf695e1a11f59c683d4299c4249",
+   "block_height": 3463164,
+   "block_hash": "00000000000c44b11a2b522663ac6f7f57e58c4d52e104e1b6c7c6f2b6e82ddb",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_cf4c8651f005625552db9c9cdc384cc6ca6ccaf695e1a11f59c683d4299c4249.json.gz",
+    "sha256": "d8929eae06d094e884e69602774ce861ba1ff652ae3cf0e06a6a83e96bdf46af",
+    "bytes": 825,
+    "content_sha256": "fafa3e6bd3394bb6a8530c248155f7efed51aad144848c475f4e6b4dddb86272",
+    "content_bytes": 1834,
+    "git_blob": "2b083eca6f652cd83580c5b50a308ec84ba1aa9b",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "cf4c8651f005625552db9c9cdc384cc6ca6ccaf695e1a11f59c683d4299c4249",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "d4e944af7819a3bd6aaf0a111ae719dd35f2eca41ceb013678ec0b1a60252889",
+   "block_height": 599833,
+   "block_hash": "0000000000163efbd0aed7ca74513be3936151717355dfa769b799b4486a3f9f",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_d4e944af7819a3bd6aaf0a111ae719dd35f2eca41ceb013678ec0b1a60252889.json.gz",
+    "sha256": "cfbf2e33d644f3fe9fc67f9c9520975bf2e70dcdf4eca8bbe3fb50e51baeb3ac",
+    "bytes": 55285,
+    "content_sha256": "d47e19fc3973f7f35f450d787bdf6b583cc54e1129e080f8937d40e420e7b704",
+    "content_bytes": 185890,
+    "git_blob": "2f8e12e56600db234834f8ab164f57d0e591b43c",
+    "captured_at_utc": "2026-10-06T10:32:58Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "d4e944af7819a3bd6aaf0a111ae719dd35f2eca41ceb013678ec0b1a60252889",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "d8d354622714a673b3d67e0dbb1f28d19df65b305a5a1574cd9e1c71e18ae01a",
+   "block_height": 3463266,
+   "block_hash": "000000000053a81297fb79a69895176f6e73655f59db056e70baabf4251ae5cd",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_d8d354622714a673b3d67e0dbb1f28d19df65b305a5a1574cd9e1c71e18ae01a.json.gz",
+    "sha256": "739a58459a0ac227c5dfb2234100a8b9d2f72fbd98aea06a6d63e44b8488c41b",
+    "bytes": 800,
+    "content_sha256": "4ae9665923af90917835ca1e00bbdbdf566e474db274309e263f789f4af8fa9f",
+    "content_bytes": 1653,
+    "git_blob": "6e8e5c7c18dab89fcca11da64e7bfa27e51c43a2",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "d8d354622714a673b3d67e0dbb1f28d19df65b305a5a1574cd9e1c71e18ae01a",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "e40a8c28d99f4687b538362899303622e6bed212b13ab0388d7014ac0899d12a",
+   "block_height": 599998,
+   "block_hash": "0000000000e8025241038eace7dfcfa3452bf1ff28bd2c8b7d68785cac9fe34c",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_e40a8c28d99f4687b538362899303622e6bed212b13ab0388d7014ac0899d12a.json.gz",
+    "sha256": "8ff2ab1a8c3a0fcdb90bfb83d5d1379417085ded9e2591882de10a405b268f98",
+    "bytes": 935,
+    "content_sha256": "0aa86296a220196c8b256d45110acff9462ccb57ad02a15db53cd769553946c2",
+    "content_bytes": 2206,
+    "git_blob": "644cc7a0c902562756b2743a76ea6871c76ad269",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "e40a8c28d99f4687b538362899303622e6bed212b13ab0388d7014ac0899d12a",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "e7f06efb00c312b310c6cbe4472454f4afd5a9727eb795e201fa98b5cc87ade2",
+   "block_height": 3462683,
+   "block_hash": "00000000006f164a5bba08d8ab3b4dd3be3cbbfb7a93fe4dbfd17cbd99d3507a",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_e7f06efb00c312b310c6cbe4472454f4afd5a9727eb795e201fa98b5cc87ade2.json.gz",
+    "sha256": "f701b4ac790c7754274ba01af689336e62e82ca1f41b54e8fbac69da2245124a",
+    "bytes": 802,
+    "content_sha256": "392d11bd91fd5b4f027b6a671be557005f245bf4d6925f8d21426a57eb14673a",
+    "content_bytes": 1658,
+    "git_blob": "bbee96e5cb08cbf0ed0ce86c77239f7775cd9879",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "e7f06efb00c312b310c6cbe4472454f4afd5a9727eb795e201fa98b5cc87ade2",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "eaade029f99936d10862f4c6613e7a1207c5f38b1b4595d08ee098201156c095",
+   "block_height": 3233261,
+   "block_hash": "0000000000db95a8491c1880437607ca8f2ddd5a4996d264dcedd2f3dae0d0ac",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_eaade029f99936d10862f4c6613e7a1207c5f38b1b4595d08ee098201156c095.json.gz",
+    "sha256": "071298d3a56afe4ab117a3f703741824e3b9df3d8e465e8afb3dfc398d262144",
+    "bytes": 922,
+    "content_sha256": "8143deece4fab1ef85429851996301ba97c019149ba4dfed6d2dfbd0fe7b8eac",
+    "content_bytes": 2201,
+    "git_blob": "40a06b6c2b4882004ce8975863baebbfda85b3bb",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "eaade029f99936d10862f4c6613e7a1207c5f38b1b4595d08ee098201156c095",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "ee1713da30446fe4d4e08ea50ecc78d7c456b441c4eb928b460c4061c09e10fd",
+   "block_height": 3463027,
+   "block_hash": "000000000070050f22436225fdc358beb6d43fffb9adb49a209445b0fd6f2abb",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_ee1713da30446fe4d4e08ea50ecc78d7c456b441c4eb928b460c4061c09e10fd.json.gz",
+    "sha256": "27515f26cc727509a2c936ab01b6c9f4dbeb402387b1f66779b510c0f3c7f734",
+    "bytes": 795,
+    "content_sha256": "0e00358b424c0f1314ffd9840ec3c0361dfb046bf4664ecb704232e3ac07e5d1",
+    "content_bytes": 1655,
+    "git_blob": "e14b8df0b64d2564bd29b09102734bdb9eecff2a",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "ee1713da30446fe4d4e08ea50ecc78d7c456b441c4eb928b460c4061c09e10fd",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "f07efb961b7de0c2d69e38cfea24d644ae30ea22b983e83afa07a9101c35a743",
+   "block_height": 1687186,
+   "block_hash": "00000000001bbb294257cc160f7fdbecef98bf6a1cfc67c578be52db3eeb4c38",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_f07efb961b7de0c2d69e38cfea24d644ae30ea22b983e83afa07a9101c35a743.json.gz",
+    "sha256": "a060a953a7044187c74bf4fcd059cfa860aea3b71a45153e000da9d734655930",
+    "bytes": 1123,
+    "content_sha256": "3e237e1e4b5cb37dd5f3ccab35d370ca21476556a873bdd856a3bd056582a31c",
+    "content_bytes": 2767,
+    "git_blob": "a25a9a9b66a8576a75f89482d9be44ebe775d507",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "f07efb961b7de0c2d69e38cfea24d644ae30ea22b983e83afa07a9101c35a743",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "fa436b021b15c9ad965ea25e53acb18622db1219dd4fc8020734db42bef8a4ef",
+   "block_height": 2501371,
+   "block_hash": "00000000008c0530ff4cf0f409d5ae396041e9c8a3e2a169e870c2dc7d032e58",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_fa436b021b15c9ad965ea25e53acb18622db1219dd4fc8020734db42bef8a4ef.json.gz",
+    "sha256": "5dcda32e3515b8670dfd7cb2ea3b1ca8d7d7f20993ede52d0db8af6c0435632e",
+    "bytes": 11865,
+    "content_sha256": "b275e65dd9c047cb7da217ad031103e7041ceb9599a53af6265686c8e41090d2",
+    "content_bytes": 37917,
+    "git_blob": "f42ddfb398dd0db29acd599f92b4f738bc9ad6cb",
+    "captured_at_utc": "2026-10-06T10:32:59Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "fa436b021b15c9ad965ea25e53acb18622db1219dd4fc8020734db42bef8a4ef",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "fbf8cbb158151fad35b8a232a78877a80395668062bc8b8ac2fa307b7617cbf8",
+   "block_height": 3463188,
+   "block_hash": "00000000003fbc35f6b9164b06ca9a330d84b7f446d2bafeada4ef01f2fa7b57",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_fbf8cbb158151fad35b8a232a78877a80395668062bc8b8ac2fa307b7617cbf8.json.gz",
+    "sha256": "a2a4e48b6845f3c0c71b81993614c1f1b39bd5e5bb113c367e034ecb56088f0a",
+    "bytes": 796,
+    "content_sha256": "f99fd339cf44b44a8b5c84a6205c5d871bdaeb2dea0005cf37b6ccb9fca156aa",
+    "content_bytes": 1638,
+    "git_blob": "d0f0878c64d74f1789815d057ed5c84be61e7a25",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "fbf8cbb158151fad35b8a232a78877a80395668062bc8b8ac2fa307b7617cbf8",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "fd829d593bb5c3b6f852eaabc1b73206ebdbf0e6120a20926e809b44f486d845",
+   "block_height": 599529,
+   "block_hash": "00000000016eb314ae04759a2a591d306d50bc71ae14592e16c9619513b319f0",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_fd829d593bb5c3b6f852eaabc1b73206ebdbf0e6120a20926e809b44f486d845.json.gz",
+    "sha256": "6aac35988ddc711527067282c9ca1154416a1421cd6d2e6264a82752c41496a9",
+    "bytes": 989,
+    "content_sha256": "81190effec8ee27998d4135ecad43915f2b5ee4f22c67ddef6ec258965938f92",
+    "content_bytes": 2403,
+    "git_blob": "66bb36ada93d91f004a05bbc06bb76a7ea97d16e",
+    "captured_at_utc": "2026-10-06T10:32:58Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "fd829d593bb5c3b6f852eaabc1b73206ebdbf0e6120a20926e809b44f486d845",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "txid": "fd88cc8a931e4d53f07a80182900db6e211b6d02898db602050a51e0395737e7",
+   "block_height": 3462699,
+   "block_hash": "00000000005c24ebb5375b1deed444ac241d8a0703ed419392a001c65a73237f",
+   "evidence": {
+    "capture": "zebra-6.4.2",
+    "path": "evidence/zebra-6.4.2/tx_fd88cc8a931e4d53f07a80182900db6e211b6d02898db602050a51e0395737e7.json.gz",
+    "sha256": "8cb52fc9c47fff538e3a45e27b0366a8b6bdb3f481faac14d1d453d55ca14036",
+    "bytes": 794,
+    "content_sha256": "3402994928db74a654284111a29f6fa261e15b09cebb5e4f8392fb36fc492148",
+    "content_bytes": 1629,
+    "git_blob": "e2f6607029a3f17015f5bc1416f46ef777e71140",
+    "captured_at_utc": "2026-10-06T10:33:00Z",
+    "rpc": {
+     "method": "getrawtransaction",
+     "params": [
+      "fd88cc8a931e4d53f07a80182900db6e211b6d02898db602050a51e0395737e7",
+      1
+     ]
+    }
+   }
+  }
+ ],
+ "cases": [
+  {
+   "id": "600000/0",
+   "txid": "99c678be78dcceaad8f8719917a315614610886f2036dbb4bc5c6ace129f0a28",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 0,
+   "version": 4,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 2 transparent outputs, 1,250,073,780 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 1250073780,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 1250073780,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 1250073780,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 1250073780,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/1",
+   "txid": "8b231f950ee915d65baf74eef6eb969e3cb031d50b6477cf66440004af004011",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 1,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 2 outputs, fee 2,640 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "fd829d593bb5c3b6f852eaabc1b73206ebdbf0e6120a20926e809b44f486d845",
+     "index": 1,
+     "value": 1097948897251
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 1097948897251,
+    "transparent_output": 1097948894611,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 1097948897251,
+    "total_output": 1097948894611,
+    "fee": 2640
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 1097948897251,
+    "transparent_output": 1097948894611,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 1097948897251,
+    "total_output": 1097948894611,
+    "fee": 2640
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/2",
+   "txid": "a9444d3678eb6987f0044b94302a21e9a67074a027182b72a99bf21ae1a6d0d5",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 2,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 2 inputs, 2 outputs, fee 1,870 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "d4e944af7819a3bd6aaf0a111ae719dd35f2eca41ceb013678ec0b1a60252889",
+     "index": 343,
+     "value": 12562982
+    },
+    {
+     "txid": "8a6f840beb2962e90fe71458170bd0b59db0c7a4800ec1c1c50fb22bd2b2746c",
+     "index": 338,
+     "value": 11876773
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 24439755,
+    "transparent_output": 24437885,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 2,
+    "output_count": 2,
+    "total_input": 24439755,
+    "total_output": 24437885,
+    "fee": 1870
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 24439755,
+    "transparent_output": 24437885,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 2,
+    "output_count": 2,
+    "total_input": 24439755,
+    "total_output": 24437885,
+    "fee": 1870
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/3",
+   "txid": "b75bfcb69fa70f226467691312bbc22a8b43cfb1597310345045b2e2fa76238b",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 3,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 2 outputs, fee 7,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "3268692740ad890bbeca29919354674fee3b1359b05eddcc2a3c7a0cf253ef31",
+     "index": 1,
+     "value": 10399643000
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 10399643000,
+    "transparent_output": 10399636000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 10399643000,
+    "total_output": 10399636000,
+    "fee": 7000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 10399643000,
+    "transparent_output": 10399636000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 10399643000,
+    "total_output": 10399636000,
+    "fee": 7000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/4",
+   "txid": "6dd71b588cf4e5fc74d49be6da7e7f1bd739b884904e47b0aaba6f2b7fc44c79",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 4,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 2 outputs, fee 2,270 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "e40a8c28d99f4687b538362899303622e6bed212b13ab0388d7014ac0899d12a",
+     "index": 1,
+     "value": 22216324
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 22216324,
+    "transparent_output": 22214054,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 22216324,
+    "total_output": 22214054,
+    "fee": 2270
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 22216324,
+    "transparent_output": 22214054,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 22216324,
+    "total_output": 22214054,
+    "fee": 2270
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/5",
+   "txid": "00c8e2ede256065b03a37936f97e85fd67206273cb3d9464d2cfc5b45911af10",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 5,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 92,000,000 zatoshi leave Sprout; 91,990,000 zatoshi enter Sapling; fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 92000000,
+    "sapling_value_balance": -91990000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     92000000
+    ],
+    "shielded_outputs": [
+     91990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 92000000,
+    "total_output": 91990000,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     92000000
+    ],
+    "shielded_outputs": [
+     91990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 92000000,
+    "total_output": 91990000,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "600000/6",
+   "txid": "11853989084c48fb3580b801e7a97a7ee3be5bd2972ddc8b6f98e70bba772d05",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 6,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 9,100,000,000 zatoshi leave Sprout; 9,099,990,000 zatoshi enter Sapling; fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 9100000000,
+    "sapling_value_balance": -9099990000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     9100000000
+    ],
+    "shielded_outputs": [
+     9099990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 9100000000,
+    "total_output": 9099990000,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     9100000000
+    ],
+    "shielded_outputs": [
+     9099990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 9100000000,
+    "total_output": 9099990000,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/7",
+   "txid": "5b731fab5063e40b59672555ae8b41e840ebf0bc488dfc1ffbeab177e7d9bf9d",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 7,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 300,000,000 zatoshi leave Sprout; 299,990,000 zatoshi enter Sapling; fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 300000000,
+    "sapling_value_balance": -299990000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     300000000
+    ],
+    "shielded_outputs": [
+     299990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 300000000,
+    "total_output": 299990000,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     300000000
+    ],
+    "shielded_outputs": [
+     299990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 300000000,
+    "total_output": 299990000,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/8",
+   "txid": "0f27e643916bb8c26da7bab6574ca051c5d982b4309d4e61e5a095b1d00b50ed",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 8,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 8,200,000,000 zatoshi leave Sprout; 8,199,990,000 zatoshi enter Sapling; fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 8200000000,
+    "sapling_value_balance": -8199990000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     8200000000
+    ],
+    "shielded_outputs": [
+     8199990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 8200000000,
+    "total_output": 8199990000,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     8200000000
+    ],
+    "shielded_outputs": [
+     8199990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 8200000000,
+    "total_output": 8199990000,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/9",
+   "txid": "682504aedd3f60bc8c45b75d08aab4475afeca4808ab023287f6f92e52578c51",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 9,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 670,000,000 zatoshi leave Sprout; 669,990,000 zatoshi enter Sapling; fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 670000000,
+    "sapling_value_balance": -669990000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     670000000
+    ],
+    "shielded_outputs": [
+     669990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 670000000,
+    "total_output": 669990000,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     670000000
+    ],
+    "shielded_outputs": [
+     669990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 670000000,
+    "total_output": 669990000,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "600000/10",
+   "txid": "8e0f8ccfcd7a205a7fff2abbe24cd0d5e9ad03cf69f240bae107fd84668e60d9",
+   "block_height": 600000,
+   "block_hash": "00000000011502273e3726d1a229b69ae5088eeac650d787dcd5eabe1429ea38",
+   "index": 10,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 81,000,000 zatoshi leave Sprout; 80,990,000 zatoshi enter Sapling; fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 81000000,
+    "sapling_value_balance": -80990000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     81000000
+    ],
+    "shielded_outputs": [
+     80990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 81000000,
+    "total_output": 80990000,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     81000000
+    ],
+    "shielded_outputs": [
+     80990000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 81000000,
+    "total_output": 80990000,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687119/0",
+   "txid": "d2f915983054efb9b8af88671f323fa444e0b7af4974dd3cc92105c6b94ee42b",
+   "block_height": 1687119,
+   "block_hash": "0000000001991db51d39d17fd626a07f2f0b44aaf5c0e831519ebe457eeb671b",
+   "index": 0,
+   "version": 5,
+   "shapes": [
+    "coinbase",
+    "shielded-coinbase"
+   ],
+   "description": "Coinbase that pays 250,000,000 zatoshi into Sapling and 62,500,000 zatoshi to 3 transparent outputs.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 62500000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": -250000000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     250000000
+    ],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312500000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 62500000,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     250000000
+    ],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312500000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687143/0",
+   "txid": "d9812db5d4d9c3981dad7550e9eb9e7f67930ebba1f85939ccf5406b739fe410",
+   "block_height": 1687143,
+   "block_hash": "00000000020252abdf313f51b343931cabfa8c07a48ca0effdb450158b1949c2",
+   "index": 0,
+   "version": 4,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 4 transparent outputs, 312,501,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 312501000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312501000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 312501000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312501000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687143/1",
+   "txid": "8454f559f0c9475ae3c6746dd17e467709fba3cec84ed3dc16b911355a47b5ae",
+   "block_height": 1687143,
+   "block_hash": "00000000020252abdf313f51b343931cabfa8c07a48ca0effdb450158b1949c2",
+   "index": 1,
+   "version": 5,
+   "shapes": [
+    "unshielding:orchard"
+   ],
+   "description": "Unshielding from Orchard: 10,001,000 zatoshi leave Orchard; 1 transparent output (10,000,000 zatoshi); fee 1,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 10001000,
+     "ironwood": 0
+    },
+    "why": "The old parser never reads the Orchard balance (10,001,000 zatoshi). It reports total input 0, total output 10,000,000 and fee -10,000,000 instead of 10,001,000, 10,000,000 and 1,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10000000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 10001000,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     10001000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 10001000,
+    "total_output": 10000000,
+    "fee": 1000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10000000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 1,
+    "total_input": 0,
+    "total_output": 10000000,
+    "fee": -10000000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687194/0",
+   "txid": "c10e15bd0a8b53bf5c519206865f6decdf73bc690128386f893e0c9007b7e3a9",
+   "block_height": 1687194,
+   "block_hash": "00000000005cdacbf9670c4aef2b7a7cf0db62fd74eab9ff320e6b1c8c66c8bf",
+   "index": 0,
+   "version": 5,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 4 transparent outputs, 312,515,583 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 312515583,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312515583,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 312515583,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312515583,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687194/1",
+   "txid": "cc97ca2ca3b3e1fb4fba349cde41e867014b2342bfea0230289ac47a189d9a81",
+   "block_height": 1687194,
+   "block_hash": "00000000005cdacbf9670c4aef2b7a7cf0db62fd74eab9ff320e6b1c8c66c8bf",
+   "index": 1,
+   "version": 5,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 1 output, fee 12,346 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "f07efb961b7de0c2d69e38cfea24d644ae30ea22b983e83afa07a9101c35a743",
+     "index": 0,
+     "value": 201126212
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 201126212,
+    "transparent_output": 201113866,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 201126212,
+    "total_output": 201113866,
+    "fee": 12346
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 201126212,
+    "transparent_output": 201113866,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 201126212,
+    "total_output": 201113866,
+    "fee": 12346
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687194/2",
+   "txid": "5e5007d455c1cb1699320285462cbf13bc0897e9b6eb91fca3191fb40c572292",
+   "block_height": 1687194,
+   "block_hash": "00000000005cdacbf9670c4aef2b7a7cf0db62fd74eab9ff320e6b1c8c66c8bf",
+   "index": 2,
+   "version": 5,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 54 outputs, fee 2,009 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "8773c6d171329d77f84cf35059cf9c8a2dd248758cbe3d8bed0f4527e1724fe8",
+     "index": 29,
+     "value": 956182510
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 956182510,
+    "transparent_output": 956180501,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 54,
+    "total_input": 956182510,
+    "total_output": 956180501,
+    "fee": 2009
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 956182510,
+    "transparent_output": 956180501,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 54,
+    "total_input": 956182510,
+    "total_output": 956180501,
+    "fee": 2009
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687194/3",
+   "txid": "6a94ebb500a23c3057f7c58e3f5e8f4991968e1bccff12d849a76d0015e23b21",
+   "block_height": 1687194,
+   "block_hash": "00000000005cdacbf9670c4aef2b7a7cf0db62fd74eab9ff320e6b1c8c66c8bf",
+   "index": 3,
+   "version": 5,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 15 inputs, 1 output, fee 228 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 192,
+     "value": 140
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 72,
+     "value": 162
+    },
+    {
+     "txid": "a0193b0e95d93e76faef9ae067c97f8f77ad56803a5712b49412f4a037216763",
+     "index": 39,
+     "value": 190
+    },
+    {
+     "txid": "373d2af92e40d7d6351afd67e974f03cd418a7d7924a5da5d22a87001d3cf6f8",
+     "index": 57,
+     "value": 240
+    },
+    {
+     "txid": "373d2af92e40d7d6351afd67e974f03cd418a7d7924a5da5d22a87001d3cf6f8",
+     "index": 18,
+     "value": 370
+    },
+    {
+     "txid": "9890ddd7593ad9b98e50cfb9469c2c500fe18ce2e1a3596442b250fa4594194f",
+     "index": 5,
+     "value": 2150
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 12,
+     "value": 2172
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 157,
+     "value": 2268
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 116,
+     "value": 4626
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 200,
+     "value": 9535
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 16,
+     "value": 10448
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 210,
+     "value": 12068
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 41,
+     "value": 12100
+    },
+    {
+     "txid": "077423f5f3b38d7d22fd20850b7b37f2f0633574e1e6907f8126552df09cb39b",
+     "index": 100,
+     "value": 15145
+    },
+    {
+     "txid": "580fad3d147ea7cfffdd705f0384c38f71f58a53a60dacdcfa7f1235dd29f73b",
+     "index": 0,
+     "value": 11420214
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 11491828,
+    "transparent_output": 11491600,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 15,
+    "output_count": 1,
+    "total_input": 11491828,
+    "total_output": 11491600,
+    "fee": 228
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 11491828,
+    "transparent_output": 11491600,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 15,
+    "output_count": 1,
+    "total_input": 11491828,
+    "total_output": 11491600,
+    "fee": 228
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "1687194/4",
+   "txid": "bd84ece1a1f9930085768a880d99445ee1ee13686c2e5979b30d920e90866517",
+   "block_height": 1687194,
+   "block_hash": "00000000005cdacbf9670c4aef2b7a7cf0db62fd74eab9ff320e6b1c8c66c8bf",
+   "index": 4,
+   "version": 5,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sapling+orchard"
+   ],
+   "description": "Sapling to Orchard, no transparent side: 89,000 zatoshi leave Sapling; 88,000 zatoshi enter Orchard; fee 1,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": -88000,
+     "ironwood": 0
+    },
+    "why": "The old parser never reads the Orchard balance (-88,000 zatoshi). It reports total input 89,000, total output 0 and fee 89,000 instead of 89,000, 88,000 and 1,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 89000,
+    "orchard_value_balance": -88000,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     89000
+    ],
+    "shielded_outputs": [
+     88000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 89000,
+    "total_output": 88000,
+    "fee": 1000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     89000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 89000,
+    "total_output": 0,
+    "fee": 89000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Worked example in the description of graphsense-lib pull request #163: the old parser reported a fee of 89,000 zatoshi, the corrected one reports 1,000.",
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "2501409/0",
+   "txid": "641b74eb2c3a65189a0781cd6917d03c181ed78511127366665d5ccf1d8a3580",
+   "block_height": 2501409,
+   "block_hash": "00000000018c04af07a9d5472e4dcb538fd1608a7c36db9c2ff2686acd2d18ee",
+   "index": 0,
+   "version": 4,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 4 transparent outputs, 312,512,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 312512000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312512000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 312512000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 4,
+    "total_input": 0,
+    "total_output": 312512000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "2501409/1",
+   "txid": "224daf9f01485fceacfe1fa49daf4d498c23a5c58ff237d28aa1495cd8bc7c5a",
+   "block_height": 2501409,
+   "block_hash": "00000000018c04af07a9d5472e4dcb538fd1608a7c36db9c2ff2686acd2d18ee",
+   "index": 1,
+   "version": 5,
+   "shapes": [
+    "fully-shielded-fee",
+    "fully-shielded-fee:orchard"
+   ],
+   "description": "Fully shielded, Orchard only: 1,000 zatoshi leave the pool and all of it is the fee. A positive balance, but not an unshielding.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 1000,
+     "ironwood": 0
+    },
+    "why": "The old parser never reads the Orchard balance (1,000 zatoshi). It reports total input 0, total output 0 and fee 0 instead of 1,000, 0 and 1,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 1000,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     1000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 1000,
+    "total_output": 0,
+    "fee": 1000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 0,
+    "total_input": 0,
+    "total_output": 0,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "2501409/2",
+   "txid": "daec99857c7566ec1eb445f521a2869d6d436eac07d05453808c5745fd1ad451",
+   "block_height": 2501409,
+   "block_hash": "00000000018c04af07a9d5472e4dcb538fd1608a7c36db9c2ff2686acd2d18ee",
+   "index": 2,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 45 inputs, 2 outputs, fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 57,
+     "value": 12620
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 42,
+     "value": 12760
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 39,
+     "value": 12830
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 111,
+     "value": 13040
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 67,
+     "value": 13100
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 99,
+     "value": 13130
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 117,
+     "value": 13420
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 49,
+     "value": 13450
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 72,
+     "value": 13480
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 58,
+     "value": 13480
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 92,
+     "value": 13480
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 31,
+     "value": 13530
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 46,
+     "value": 13680
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 96,
+     "value": 14300
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 79,
+     "value": 14400
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 29,
+     "value": 14430
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 44,
+     "value": 14730
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 103,
+     "value": 14940
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 59,
+     "value": 14970
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 12,
+     "value": 16600
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 94,
+     "value": 16680
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 7,
+     "value": 16780
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 75,
+     "value": 16820
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 106,
+     "value": 16820
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 22,
+     "value": 16820
+    },
+    {
+     "txid": "a87cdb25245e357d9d15a2a93aa90d60cd2a82dfbae75475ecef9ec1438efd06",
+     "index": 1,
+     "value": 16836
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 33,
+     "value": 16860
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 32,
+     "value": 16860
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 20,
+     "value": 17020
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 17,
+     "value": 17060
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 46,
+     "value": 17100
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 80,
+     "value": 17100
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 5,
+     "value": 17440
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 21,
+     "value": 17440
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 13,
+     "value": 17540
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 81,
+     "value": 17700
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 37,
+     "value": 17780
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 36,
+     "value": 17780
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 73,
+     "value": 17880
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 100,
+     "value": 18000
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 63,
+     "value": 18080
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 66,
+     "value": 18080
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 28,
+     "value": 18080
+    },
+    {
+     "txid": "1a651ea15b65e1410129492259140d5fdae1fbc179101b0a9d1d0dc527d92b6d",
+     "index": 38,
+     "value": 18120
+    },
+    {
+     "txid": "85427453a4778ef0cf2f8f7b7dc79904e048c0bedc7cb8a057373fae12e58737",
+     "index": 60,
+     "value": 18200
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 711246,
+    "transparent_output": 701246,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 45,
+    "output_count": 2,
+    "total_input": 711246,
+    "total_output": 701246,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 711246,
+    "transparent_output": 701246,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 45,
+    "output_count": 2,
+    "total_input": 711246,
+    "total_output": 701246,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "2501409/3",
+   "txid": "7bd7717f8897e323840ac0f6b09518e580dbca1fa77dbd20ed0b90fc56d2fe69",
+   "block_height": 2501409,
+   "block_hash": "00000000018c04af07a9d5472e4dcb538fd1608a7c36db9c2ff2686acd2d18ee",
+   "index": 3,
+   "version": 5,
+   "shapes": [
+    "shielding:orchard"
+   ],
+   "description": "Shielding into Orchard: 1 transparent input (363,000,000 zatoshi); 362,999,000 zatoshi enter Orchard; fee 1,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": -362999000,
+     "ironwood": 0
+    },
+    "why": "The old parser never reads the Orchard balance (-362,999,000 zatoshi). It reports total input 363,000,000, total output 0 and fee 363,000,000 instead of 363,000,000, 362,999,000 and 1,000."
+   },
+   "previous_outputs": [
+    {
+     "txid": "fa436b021b15c9ad965ea25e53acb18622db1219dd4fc8020734db42bef8a4ef",
+     "index": 0,
+     "value": 363000000
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 363000000,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": -362999000,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     362999000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 363000000,
+    "total_output": 362999000,
+    "fee": 1000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 363000000,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 363000000,
+    "total_output": 0,
+    "fee": 363000000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3438010/0",
+   "txid": "852323c5af3b5e735c72012ff61e89200b43273f56465b0bd76366fec81c0422",
+   "block_height": 3438010,
+   "block_hash": "000000000029b042d36389040f449455eddd4831ae9b058849cce4a7c3612481",
+   "index": 0,
+   "version": 6,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 2 transparent outputs, 137,570,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137570000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137570000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137570000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137570000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3438010/1",
+   "txid": "af00b519c98cda27cca3832f09e304057bb7ba8e2f7ddda0e93778d61b60c69b",
+   "block_height": 3438010,
+   "block_hash": "000000000029b042d36389040f449455eddd4831ae9b058849cce4a7c3612481",
+   "index": 1,
+   "version": 5,
+   "shapes": [
+    "unshielding:sapling"
+   ],
+   "description": "Unshielding from Sapling: 10,995,068,541 zatoshi leave Sapling; 1 transparent output (10,995,028,541 zatoshi); fee 40,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10995028541,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 10995068541,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     10995068541
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 10995068541,
+    "total_output": 10995028541,
+    "fee": 40000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10995028541,
+    "shielded_inputs": [
+     10995068541
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 10995068541,
+    "total_output": 10995028541,
+    "fee": 40000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3438010/2",
+   "txid": "80388d29ef0582a9c7d15b1096a564a44ec055e66cdb3edd9f557cc2888b6c55",
+   "block_height": 3438010,
+   "block_hash": "000000000029b042d36389040f449455eddd4831ae9b058849cce4a7c3612481",
+   "index": 2,
+   "version": 6,
+   "shapes": [
+    "fully-shielded-fee",
+    "fully-shielded-fee:sapling"
+   ],
+   "description": "Fully shielded, Sapling only: 10,000 zatoshi leave the pool and all of it is the fee. A positive balance, but not an unshielding.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 10000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     10000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 10000,
+    "total_output": 0,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     10000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 10000,
+    "total_output": 0,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3438010/3",
+   "txid": "13ceb5a350d02ba6b9b8508e748187c454b813bef49a565a425b2951ed5f7691",
+   "block_height": 3438010,
+   "block_hash": "000000000029b042d36389040f449455eddd4831ae9b058849cce4a7c3612481",
+   "index": 3,
+   "version": 6,
+   "shapes": [
+    "ironwood",
+    "unshielding:ironwood"
+   ],
+   "description": "Unshielding from Ironwood: 10,409,748 zatoshi leave Ironwood; 1 transparent output (10,389,748 zatoshi); fee 20,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 10409748
+    },
+    "why": "The old parser never reads the Ironwood balance (10,409,748 zatoshi). It reports total input 0, total output 10,389,748 and fee -10,389,748 instead of 10,409,748, 10,389,748 and 20,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10389748,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 10409748,
+    "shielded_inputs": [
+     10409748
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 10409748,
+    "total_output": 10389748,
+    "fee": 20000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10389748,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 1,
+    "total_input": 0,
+    "total_output": 10389748,
+    "fee": -10389748
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3442130/0",
+   "txid": "cbd5f4d923165f470f22c39fef63aa8d1c16a12380ae60dafafd1d94fa33de2b",
+   "block_height": 3442130,
+   "block_hash": "0000000000606a295babe75433374efde94a7e989ef58087dc13dbef72d5e7e2",
+   "index": 0,
+   "version": 6,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 2 transparent outputs, 137,515,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137515000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137515000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137515000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137515000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3442130/1",
+   "txid": "c30b8b7e014599442ff851f7c6bda59ab88b6a79048f4754f365bb50ab7999dc",
+   "block_height": 3442130,
+   "block_hash": "0000000000606a295babe75433374efde94a7e989ef58087dc13dbef72d5e7e2",
+   "index": 1,
+   "version": 6,
+   "shapes": [
+    "shielding:sapling"
+   ],
+   "description": "Shielding into Sapling: 2 transparent inputs (3,000,000,000 zatoshi); 2,821,000,000 zatoshi enter Sapling; 1 transparent output (178,985,000 zatoshi); fee 15,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "bae8c7aca322619a554640da7351426ce99341a95a974015bb7b0fb6c2c9a11b",
+     "index": 1,
+     "value": 1500000000
+    },
+    {
+     "txid": "eaade029f99936d10862f4c6613e7a1207c5f38b1b4595d08ee098201156c095",
+     "index": 1,
+     "value": 1500000000
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 3000000000,
+    "transparent_output": 178985000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": -2821000000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     2821000000
+    ],
+    "input_count": 2,
+    "output_count": 2,
+    "total_input": 3000000000,
+    "total_output": 2999985000,
+    "fee": 15000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 3000000000,
+    "transparent_output": 178985000,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     2821000000
+    ],
+    "input_count": 2,
+    "output_count": 2,
+    "total_input": 3000000000,
+    "total_output": 2999985000,
+    "fee": 15000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3442400/0",
+   "txid": "611bb55ec14901bf1f322a18c608d883e1b140b98958f6d13cc71129cefffbde",
+   "block_height": 3442400,
+   "block_hash": "00000000000e7e765c75d84472c63e9ad87b02ce6dc361c0869a4099b4608936",
+   "index": 0,
+   "version": 6,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 2 transparent outputs, 137,555,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137555000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137555000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137555000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137555000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3442400/1",
+   "txid": "7ab09cdf4bc58098dc37d8dce2085af7010e1e4e00290246862459a3e4832fc5",
+   "block_height": 3442400,
+   "block_hash": "00000000000e7e765c75d84472c63e9ad87b02ce6dc361c0869a4099b4608936",
+   "index": 1,
+   "version": 4,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "sprout"
+   ],
+   "description": "Sprout to Sapling, no transparent side: 400,000,000 zatoshi leave Sprout; 399,960,000 zatoshi enter Sapling; fee 40,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 400000000,
+    "sapling_value_balance": -399960000,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [
+     400000000
+    ],
+    "shielded_outputs": [
+     399960000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 400000000,
+    "total_output": 399960000,
+    "fee": 40000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [
+     400000000
+    ],
+    "shielded_outputs": [
+     399960000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 400000000,
+    "total_output": 399960000,
+    "fee": 40000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3442400/2",
+   "txid": "b1a00ede11a2dabd31d9465d969454f152980bc85aa92bdbf5425640a39cb857",
+   "block_height": 3442400,
+   "block_hash": "00000000000e7e765c75d84472c63e9ad87b02ce6dc361c0869a4099b4608936",
+   "index": 2,
+   "version": 6,
+   "shapes": [
+    "ironwood",
+    "shielding:ironwood"
+   ],
+   "description": "Shielding into Ironwood: 1 transparent input (4,260,000 zatoshi); 135,028 zatoshi enter Ironwood; 1 transparent output (4,109,972 zatoshi); fee 15,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": -135028
+    },
+    "why": "The old parser never reads the Ironwood balance (-135,028 zatoshi). It reports total input 4,260,000, total output 4,109,972 and fee 150,028 instead of 4,260,000, 4,245,000 and 15,000."
+   },
+   "previous_outputs": [
+    {
+     "txid": "0982413a27b031ea711a57f247d65acafa7c4291bd7fb97fc9cb2d7e175d0c77",
+     "index": 0,
+     "value": 4260000
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 4260000,
+    "transparent_output": 4109972,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": -135028,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     135028
+    ],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 4260000,
+    "total_output": 4245000,
+    "fee": 15000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 4260000,
+    "transparent_output": 4109972,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 4260000,
+    "total_output": 4109972,
+    "fee": 150028
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/0",
+   "txid": "e3f9e09fb9f8269e5bb992ffc64e33bb22b16479de3bf4727447576ed6b5285e",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 0,
+   "version": 5,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 2 transparent outputs, 137,746,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137746000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137746000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137746000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137746000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/1",
+   "txid": "8913f009fe5320da3b8ec82bcf8aea86c0ff42654a745c867ae01486db09bed7",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 1,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 1 output, fee 20,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "2a266f8dca20bb0cfdd7441f13136031921319cd3e7c56bd4883d212121d81f3",
+     "index": 0,
+     "value": 845049
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 845049,
+    "transparent_output": 825049,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 845049,
+    "total_output": 825049,
+    "fee": 20000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 845049,
+    "transparent_output": 825049,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 845049,
+    "total_output": 825049,
+    "fee": 20000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/2",
+   "txid": "6f37465ac2a718135c61fb62049e6205977da2042774002d301d018a76da04c8",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 2,
+   "version": 6,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "ironwood",
+    "sapling+orchard",
+    "three-pool"
+   ],
+   "description": "Three pools, no transparent side: 24,898 zatoshi leave Orchard; 505,102 zatoshi leave Ironwood; 500,000 zatoshi enter Sapling; fee 30,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 24898,
+     "ironwood": 505102
+    },
+    "why": "The old parser never reads the Orchard balance (24,898 zatoshi) and the Ironwood balance (505,102 zatoshi). It reports total input 0, total output 500,000 and fee -500,000 instead of 530,000, 500,000 and 30,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": -500000,
+    "orchard_value_balance": 24898,
+    "ironwood_value_balance": 505102,
+    "shielded_inputs": [
+     24898,
+     505102
+    ],
+    "shielded_outputs": [
+     500000
+    ],
+    "input_count": 2,
+    "output_count": 1,
+    "total_input": 530000,
+    "total_output": 500000,
+    "fee": 30000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     500000
+    ],
+    "input_count": 0,
+    "output_count": 1,
+    "total_input": 0,
+    "total_output": 500000,
+    "fee": -500000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3463373/3",
+   "txid": "7e39f93eb6542dad5cdcbffaa2fb7a88524da7df3195849a44fb467cc47c1c90",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 3,
+   "version": 4,
+   "shapes": [
+    "shielding:sapling"
+   ],
+   "description": "Shielding into Sapling: 15 transparent inputs (1,878,009,839 zatoshi); 1,877,909,839 zatoshi enter Sapling; fee 100,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "d8d354622714a673b3d67e0dbb1f28d19df65b305a5a1574cd9e1c71e18ae01a",
+     "index": 0,
+     "value": 125120000
+    },
+    {
+     "txid": "6a7b10b6c428335b239bdb211d16717d6a36e6e16018974cfc73a392a3c9c461",
+     "index": 0,
+     "value": 125000000
+    },
+    {
+     "txid": "5e611b6383e91aff9cded8f15ba9ad9ce7be5f234948d5d2ce7bc8ee1176528f",
+     "index": 0,
+     "value": 125000000
+    },
+    {
+     "txid": "e7f06efb00c312b310c6cbe4472454f4afd5a9727eb795e201fa98b5cc87ade2",
+     "index": 0,
+     "value": 126065000
+    },
+    {
+     "txid": "c951e3e1f025ac6c2b1c59cbe5dc6535a346a1e7cf5bd14bcc3df9e7cbeae1e3",
+     "index": 0,
+     "value": 125072000
+    },
+    {
+     "txid": "fd88cc8a931e4d53f07a80182900db6e211b6d02898db602050a51e0395737e7",
+     "index": 0,
+     "value": 125847727
+    },
+    {
+     "txid": "b08e28d98b79d79e88607a6d138f267d7473350e67e0f3fb205f0901f95839ec",
+     "index": 0,
+     "value": 125015000
+    },
+    {
+     "txid": "40658968c551297c5e39a9fd8d1f790d838efd79bdde4e2ded92a61389ed1bee",
+     "index": 0,
+     "value": 125116100
+    },
+    {
+     "txid": "5d4acc1ed9ab243c78d3ee9ce6f2f2bf68097385dc8af67a4c2550b97b42ccf0",
+     "index": 0,
+     "value": 125000000
+    },
+    {
+     "txid": "b68bb4972e8e64e70d22f552c788bc4c253662d0417237cca451c195419e62f2",
+     "index": 0,
+     "value": 125000000
+    },
+    {
+     "txid": "55766cf3ae1309711b22e1b9db66b4c05bc02e45ee77447dba5442d34086b0f7",
+     "index": 0,
+     "value": 125306212
+    },
+    {
+     "txid": "fbf8cbb158151fad35b8a232a78877a80395668062bc8b8ac2fa307b7617cbf8",
+     "index": 0,
+     "value": 125055000
+    },
+    {
+     "txid": "6a0f189c1a0ca11a0fccd03bb72835c5ce32ba613dd75abdcbab16945b323af9",
+     "index": 0,
+     "value": 125317800
+    },
+    {
+     "txid": "102220ed5caa9ac69f051627eab195b4b1a9319005da8287f63af048db7fcff9",
+     "index": 0,
+     "value": 125095000
+    },
+    {
+     "txid": "ee1713da30446fe4d4e08ea50ecc78d7c456b441c4eb928b460c4061c09e10fd",
+     "index": 0,
+     "value": 125000000
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 1878009839,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": -1877909839,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     1877909839
+    ],
+    "input_count": 15,
+    "output_count": 1,
+    "total_input": 1878009839,
+    "total_output": 1877909839,
+    "fee": 100000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 1878009839,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     1877909839
+    ],
+    "input_count": 15,
+    "output_count": 1,
+    "total_input": 1878009839,
+    "total_output": 1877909839,
+    "fee": 100000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3463373/4",
+   "txid": "5a08a1df6226ec69a3a410258316a288785f8fb9da81089421063bc36c20d741",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 4,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 2 inputs, 1 output, fee 16,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "1af6a1708ed095cab7616df8aa233565a32715b968c01aa0383417d5f2ab0710",
+     "index": 81,
+     "value": 10402404
+    },
+    {
+     "txid": "7e3d1ecbca322b462b4f88993b47eb24aaeef6e6dc16b6fb5ddea505ec661013",
+     "index": 71,
+     "value": 10125208
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 20527612,
+    "transparent_output": 20511612,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 2,
+    "output_count": 1,
+    "total_input": 20527612,
+    "total_output": 20511612,
+    "fee": 16000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 20527612,
+    "transparent_output": 20511612,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 2,
+    "output_count": 1,
+    "total_input": 20527612,
+    "total_output": 20511612,
+    "fee": 16000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/5",
+   "txid": "afc6d16baddb4853c61d5d8d94764cf83dc0b011a0a5181a005965c63a2351f3",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 5,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 2 outputs, fee 20,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "5f3b458886e5605a6d9b88c25c4e24e1c112dcc44a4c33fa8801ccad9cd4f62c",
+     "index": 1,
+     "value": 274996487
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 274996487,
+    "transparent_output": 274976487,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 274996487,
+    "total_output": 274976487,
+    "fee": 20000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 274996487,
+    "transparent_output": 274976487,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 274996487,
+    "total_output": 274976487,
+    "fee": 20000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/6",
+   "txid": "83528670357dab26b94211f39d5dcf2e7efa776d7ca68c8762e49676e0562780",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 6,
+   "version": 6,
+   "shapes": [
+    "ironwood",
+    "shielding:ironwood"
+   ],
+   "description": "Shielding into Ironwood: 1 transparent input (125,000,000 zatoshi); 124,985,000 zatoshi enter Ironwood; fee 15,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": -124985000
+    },
+    "why": "The old parser never reads the Ironwood balance (-124,985,000 zatoshi). It reports total input 125,000,000, total output 0 and fee 125,000,000 instead of 125,000,000, 124,985,000 and 15,000."
+   },
+   "previous_outputs": [
+    {
+     "txid": "22a6b9967e89543e8ab719d8351dfd7814cd761588ad375731ccb0fd42b1d30b",
+     "index": 0,
+     "value": 125000000
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 125000000,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": -124985000,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     124985000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 125000000,
+    "total_output": 124985000,
+    "fee": 15000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 125000000,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 125000000,
+    "total_output": 0,
+    "fee": 125000000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3463373/7",
+   "txid": "8691e06cef8a8d59dd176350259f405a5e88e3f884c131f4be91857d41e4d495",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 7,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 1 output, fee 20,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "6b6e8f2ff02cb9bb83837eba4c7e8c49e6cf1c78785b7758d631341d37d846da",
+     "index": 0,
+     "value": 293751195
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 293751195,
+    "transparent_output": 293731195,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 293751195,
+    "total_output": 293731195,
+    "fee": 20000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 293751195,
+    "transparent_output": 293731195,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 293751195,
+    "total_output": 293731195,
+    "fee": 20000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/8",
+   "txid": "068bde0e9816e55004ed55e16dd3869fd8b247244173a3710d30e373c1bf30c6",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 8,
+   "version": 4,
+   "shapes": [
+    "transparent-only"
+   ],
+   "description": "Transparent only: 1 input, 2 outputs, fee 10,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [
+    {
+     "txid": "cf4c8651f005625552db9c9cdc384cc6ca6ccaf695e1a11f59c683d4299c4249",
+     "index": 0,
+     "value": 31887966
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 31887966,
+    "transparent_output": 31877966,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 31887966,
+    "total_output": 31877966,
+    "fee": 10000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 31887966,
+    "transparent_output": 31877966,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 2,
+    "total_input": 31887966,
+    "total_output": 31877966,
+    "fee": 10000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3463373/9",
+   "txid": "c5b7ed56b5340a88645a97a683dae5b51c62b2405582fe1e4743da85e9a274b7",
+   "block_height": 3463373,
+   "block_hash": "000000000056df75a4dbfca5164574703573f12eb18411b647589909c081bd0f",
+   "index": 9,
+   "version": 6,
+   "shapes": [
+    "ironwood",
+    "unshielding:ironwood"
+   ],
+   "description": "Unshielding from Ironwood: 10,515,000 zatoshi leave Ironwood; 1 transparent output (10,500,000 zatoshi); fee 15,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 10515000
+    },
+    "why": "The old parser never reads the Ironwood balance (10,515,000 zatoshi). It reports total input 0, total output 10,500,000 and fee -10,500,000 instead of 10,515,000, 10,500,000 and 15,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10500000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 10515000,
+    "shielded_inputs": [
+     10515000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 10515000,
+    "total_output": 10500000,
+    "fee": 15000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 10500000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 1,
+    "total_input": 0,
+    "total_output": 10500000,
+    "fee": -10500000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3479000/0",
+   "txid": "369e597e0573082b08171e7f08bbf96fe10dd81d017e0344e676b5d5c3e670c0",
+   "block_height": 3479000,
+   "block_hash": "0000000000461f792f5f915c6008d4c6e97b87ae6dda49c0edd8f96a0dc38098",
+   "index": 0,
+   "version": 5,
+   "shapes": [
+    "coinbase"
+   ],
+   "description": "Coinbase with 2 transparent outputs, 137,590,000 zatoshi.",
+   "old_code": {
+    "differs": false,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 0
+    },
+    "why": "No Orchard or Ironwood value: the old and the corrected parser must report the same values."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137590000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137590000,
+    "fee": 0
+   },
+   "before_observed": {
+    "is_coinbase": true,
+    "transparent_input": 0,
+    "transparent_output": 137590000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 2,
+    "total_input": 0,
+    "total_output": 137590000,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": []
+  },
+  {
+   "id": "3479000/1",
+   "txid": "af9eae20963e5e53e2bda3275ffcd1d19decad6530ce46f55b83585336819b82",
+   "block_height": 3479000,
+   "block_hash": "0000000000461f792f5f915c6008d4c6e97b87ae6dda49c0edd8f96a0dc38098",
+   "index": 1,
+   "version": 6,
+   "shapes": [
+    "fully-shielded-fee",
+    "fully-shielded-fee:ironwood",
+    "ironwood"
+   ],
+   "description": "Fully shielded, Ironwood only: 40,000 zatoshi leave the pool and all of it is the fee. A positive balance, but not an unshielding.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 40000
+    },
+    "why": "The old parser never reads the Ironwood balance (40,000 zatoshi). It reports total input 0, total output 0 and fee 0 instead of 40,000, 0 and 40,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 40000,
+    "shielded_inputs": [
+     40000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 0,
+    "total_input": 40000,
+    "total_output": 0,
+    "fee": 40000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 0,
+    "total_input": 0,
+    "total_output": 0,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3479000/2",
+   "txid": "aee031d4299acacdfc4d1b0bfc6d34d760f5b759e187a202a917f3b297af60a2",
+   "block_height": 3479000,
+   "block_hash": "0000000000461f792f5f915c6008d4c6e97b87ae6dda49c0edd8f96a0dc38098",
+   "index": 2,
+   "version": 6,
+   "shapes": [
+    "ironwood",
+    "unshielding:ironwood"
+   ],
+   "description": "Unshielding from Ironwood: 300,015,000 zatoshi leave Ironwood; 1 transparent output (300,000,000 zatoshi); fee 15,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": 300015000
+    },
+    "why": "The old parser never reads the Ironwood balance (300,015,000 zatoshi). It reports total input 0, total output 300,000,000 and fee -300,000,000 instead of 300,015,000, 300,000,000 and 15,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 300000000,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": 300015000,
+    "shielded_inputs": [
+     300015000
+    ],
+    "shielded_outputs": [],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 300015000,
+    "total_output": 300000000,
+    "fee": 15000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 300000000,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 1,
+    "total_input": 0,
+    "total_output": 300000000,
+    "fee": -300000000
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3479000/3",
+   "txid": "3115796d7ebd1f35d270229221166f2318888587153a294dfb712ef620899e53",
+   "block_height": 3479000,
+   "block_hash": "0000000000461f792f5f915c6008d4c6e97b87ae6dda49c0edd8f96a0dc38098",
+   "index": 3,
+   "version": 6,
+   "shapes": [
+    "cross-pool",
+    "fully-shielded-fee",
+    "ironwood"
+   ],
+   "description": "Orchard to Ironwood, no transparent side: 1,020,000 zatoshi leave Orchard; 1,000,000 zatoshi enter Ironwood; fee 20,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 1020000,
+     "ironwood": -1000000
+    },
+    "why": "The old parser never reads the Orchard balance (1,020,000 zatoshi) and the Ironwood balance (-1,000,000 zatoshi). It reports total input 0, total output 0 and fee 0 instead of 1,020,000, 1,000,000 and 20,000."
+   },
+   "previous_outputs": [],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 1020000,
+    "ironwood_value_balance": -1000000,
+    "shielded_inputs": [
+     1020000
+    ],
+    "shielded_outputs": [
+     1000000
+    ],
+    "input_count": 1,
+    "output_count": 1,
+    "total_input": 1020000,
+    "total_output": 1000000,
+    "fee": 20000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 0,
+    "transparent_output": 0,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 0,
+    "output_count": 0,
+    "total_input": 0,
+    "total_output": 0,
+    "fee": 0
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  },
+  {
+   "id": "3479000/4",
+   "txid": "e6b8618cfeccce30cec8ad811768231f82bb1f93b8cec4d789537cdf2bde8f1b",
+   "block_height": 3479000,
+   "block_hash": "0000000000461f792f5f915c6008d4c6e97b87ae6dda49c0edd8f96a0dc38098",
+   "index": 4,
+   "version": 6,
+   "shapes": [
+    "ironwood",
+    "shielding:ironwood"
+   ],
+   "description": "Shielding into Ironwood: 2 transparent inputs (661,586,470 zatoshi); 2,132,669 zatoshi enter Ironwood; 1 transparent output (659,438,801 zatoshi); fee 15,000 zatoshi.",
+   "old_code": {
+    "differs": true,
+    "not_read": {
+     "orchard": 0,
+     "ironwood": -2132669
+    },
+    "why": "The old parser never reads the Ironwood balance (-2,132,669 zatoshi). It reports total input 661,586,470, total output 659,438,801 and fee 2,147,669 instead of 661,586,470, 661,571,470 and 15,000."
+   },
+   "previous_outputs": [
+    {
+     "txid": "5e1825ed65aa5da49445c000b2b7b91b74d42fd70dce66fcd92279f72dfd2ddb",
+     "index": 1,
+     "value": 329778329
+    },
+    {
+     "txid": "217aa736eb0bc8d8fd5d8797631e06d09083f0bb7c0a3823dccc4ba77ca7e0c7",
+     "index": 0,
+     "value": 331808141
+    }
+   ],
+   "expected": {
+    "is_coinbase": false,
+    "transparent_input": 661586470,
+    "transparent_output": 659438801,
+    "sprout_value_balance": 0,
+    "sapling_value_balance": 0,
+    "orchard_value_balance": 0,
+    "ironwood_value_balance": -2132669,
+    "shielded_inputs": [],
+    "shielded_outputs": [
+     2132669
+    ],
+    "input_count": 2,
+    "output_count": 2,
+    "total_input": 661586470,
+    "total_output": 661571470,
+    "fee": 15000
+   },
+   "before_observed": {
+    "is_coinbase": false,
+    "transparent_input": 661586470,
+    "transparent_output": 659438801,
+    "shielded_inputs": [],
+    "shielded_outputs": [],
+    "input_count": 2,
+    "output_count": 1,
+    "total_input": 661586470,
+    "total_output": 659438801,
+    "fee": 2147669
+   },
+   "transformer_observed": {
+    "before_coinjoin": false,
+    "after_coinjoin": false
+   },
+   "references": [
+    "Named in graphsense-lib tests/test_btc.py at v2.16.4."
+   ]
+  }
+ ]
+}

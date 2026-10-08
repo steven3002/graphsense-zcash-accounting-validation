@@ -1,0 +1,7 @@
+# Evidence and wheels are binary: never convert line endings, never diff as text.
+*.gz   binary
+*.whl  binary
+# Text files are stored with LF and checked out with LF on every platform, so their checksums are the same everywhere.
+*           text=auto eol=lf
+*.gz        -text
+*.whl       -text

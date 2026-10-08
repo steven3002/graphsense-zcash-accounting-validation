@@ -1,0 +1,51 @@
+[project]
+name = "graphsense-zcash-accounting-validation"
+version = "1.0.0"
+description = "Reproducible validation of GraphSense's Zcash accounting: old versus corrected graphsense-lib, against packaged mainnet evidence."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Steven Hert" }]
+requires-python = ">=3.10"
+# The tool itself needs nothing but the Python standard library.
+dependencies = []
+
+[dependency-groups]
+# Only for working on the tool: its test suite, linter and type checker. Not needed to run the validation.
+dev = [
+    "pytest>=8.3.4",
+    "ruff>=0.15.1",
+    "ty>=0.0.1a20",
+    "jsonschema>=4.23",  # the reference validator the built-in one is tested against
+]
+
+[tool.uv]
+# Nothing is built or installed: the tool runs from the checkout (gs-zec-validate.py).
+package = false
+# Development tools are resolved as of this date, so `uv lock` gives the same uv.lock again.
+exclude-newer = "2026-10-06T00:00:00Z"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+# what running the tool creates inside the checkout is not part of the code
+extend-exclude = [".envs", "report"]
+
+[tool.ruff.lint]
+extend-select = ["B", "I", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["gs_zec_validate", "conftest"]
+
+[tool.ty.src]
+include = ["gs_zec_validate", "gs-zec-validate.py", "tests"]
+
+[tool.ty.environment]
+# the tests import their helpers from tests/conftest.py
+extra-paths = ["tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "e2e: runs the real GraphSense environments (run the install step first, or these tests are skipped)",
+]

@@ -1,0 +1,12 @@
+# Third-party packages that graphsenselib.ingest.transform imports directly, written as graphsense-lib 2.16.4 declares them.
+-r exporter.in
+bitarray>=3.0
+cassandra-driver>=3.29
+click>=8.1
+goodconf[yaml]>=6.0
+methodtools>=0.4.7
+pandas>=2.3.3
+pydantic>=2.10
+pydantic-settings>=2.7
+rich>=13.9
+tenacity>=9.0

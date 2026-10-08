@@ -1,0 +1,8 @@
+# Third-party packages that graphsenselib.ingest.rpc_utxo imports directly, written as graphsense-lib 2.16.4 declares them.
+base58>=2.1
+bech32>=1.2.0
+coincurve>=21.0.0
+orjson>=3.10
+requests>=2.32.5
+# Imported by graphsenselib.utils.pubkey_to_address but not declared by graphsense-lib; a full install gets it through eth-account.
+eth-keys

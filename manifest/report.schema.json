@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report of a gs-zec-validate run",
+  "description": "`results` (and `transformer_results`) are identical on every correct run; `run` holds what varies. All amounts are integers in zatoshi. See docs/REPORT.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_schema_version", "results", "results_sha256", "published_results_sha256", "matches_published", "run", "verdict", "exit_status"],
+  "properties": {
+    "report_schema_version": {"const": 1},
+    "results": {"$ref": "#/$defs/results"},
+    "results_sha256": {"description": "sha256 of `results` serialised as JSON with sorted keys, separators ',' and ':', ASCII only.", "$ref": "#/$defs/hex64"},
+    "published_results_sha256": {"description": "The checksum in RESULTS.sha256; null for a non-canonical run or when the file has none.", "type": ["string", "null"]},
+    "matches_published": {"description": "Whether results_sha256 equals the published checksum; null for a non-canonical run.", "type": ["boolean", "null"]},
+    "transformer_results": {"$ref": "#/$defs/transformer_results"},
+    "transformer_results_sha256": {"$ref": "#/$defs/hex64"},
+    "transformer_matches_published": {"type": ["boolean", "null"]},
+    "run": {
+      "description": "Facts about this run. Not part of any checksum. Holds no host name, user name or path.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["started_utc", "milliseconds", "python", "implementation", "platform", "environments"],
+      "properties": {
+        "started_utc": {"type": "string"},
+        "milliseconds": {"type": "integer", "minimum": 0},
+        "python": {"description": "Version of the interpreter that ran the command.", "type": "string"},
+        "implementation": {"type": "string"},
+        "platform": {"description": "Operating system and machine type.", "type": "string"},
+        "environments": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["before", "after"],
+          "properties": {"before": {"$ref": "#/$defs/environment"}, "after": {"$ref": "#/$defs/environment"}}
+        }
+      }
+    },
+    "verdict": {"description": "pass only if every required check passed and, for a canonical run, the checksum equals the published one.", "enum": ["pass", "fail"]},
+    "exit_status": {"enum": [0, 1]}
+  },
+  "$defs": {
+    "hex64": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "value": {"description": "An amount in zatoshi, a count, a flag, a list of amounts, null when the revision reports nothing, or a text when the revision returned something that is not an integer.", "type": ["integer", "boolean", "array", "null", "string"], "items": {"type": ["integer", "string"]}},
+    "error": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["type", "message"],
+      "properties": {"type": {"type": "string"}, "message": {"type": "string"}}
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {"name": {"type": "string"}, "version": {"type": "string"}}
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "status", "checked", "failed", "failures"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "status": {"enum": ["pass", "fail", "not-applicable"]},
+        "checked": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "failures": {"description": "One message per failure; each names the case and the field.", "type": "array", "items": {"type": "string"}}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["python", "graphsense_lib_version", "distributions", "third_party", "loopback_connections", "override", "worker_stderr_lines"],
+      "properties": {
+        "python": {"type": ["string", "null"]},
+        "graphsense_lib_version": {"description": "Version of the installed graphsense-lib distribution; null when the code came from a source directory.", "type": ["string", "null"]},
+        "distributions": {"type": "integer", "minimum": 0},
+        "third_party": {"description": "Installed distributions and their versions.", "type": "object", "additionalProperties": {"type": "string"}},
+        "loopback_connections": {"description": "Connections to 127.0.0.1 made by the GraphSense process (to the replay server).", "type": "integer", "minimum": 0},
+        "override": {"enum": ["python", "src", null]},
+        "worker_stderr_lines": {"type": "integer", "minimum": 0}
+      }
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pinned", "found", "import_error", "is_pinned_code"],
+      "properties": {
+        "pinned": {
+          "description": "What the manifest pins for this side.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "git_tag", "git_commit", "wheel_sha256", "package_tree_sha256"],
+          "properties": {
+            "version": {"type": "string"},
+            "git_tag": {"type": "string"},
+            "git_commit": {"type": "string"},
+            "wheel_sha256": {"$ref": "#/$defs/hex64"},
+            "package_tree_sha256": {"$ref": "#/$defs/hex64"}
+          }
+        },
+        "found": {
+          "description": "What was imported in this run; null if the import failed.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["package_tree_sha256", "package_file_count", "files"],
+          "properties": {
+            "package_tree_sha256": {"$ref": "#/$defs/hex64"},
+            "package_file_count": {"type": "integer", "minimum": 0},
+            "files": {
+              "type": "object",
+              "additionalProperties": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "required": ["sha256", "git_blob"],
+                "properties": {"sha256": {"$ref": "#/$defs/hex64"}, "git_blob": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "import_error": {"$ref": "#/$defs/error"},
+        "is_pinned_code": {"type": "boolean"}
+      }
+    },
+    "results": {
+      "description": "The deterministic part of the report.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "manifest", "canonical", "revisions", "evidence", "checks", "blocks", "cases", "summary", "verdict"],
+      "properties": {
+        "tool": {"$ref": "#/$defs/tool"},
+        "manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256", "schema_version", "dataset_version"],
+          "properties": {"path": {"type": "string"}, "sha256": {"$ref": "#/$defs/hex64"}, "schema_version": {"type": "integer"}, "dataset_version": {"type": "string"}}
+        },
+        "canonical": {"description": "True only when both sides ran the pinned code.", "type": "boolean"},
+        "revisions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["before", "after"],
+          "properties": {"before": {"$ref": "#/$defs/revision"}, "after": {"$ref": "#/$defs/revision"}}
+        },
+        "evidence": {
+          "description": "Every evidence file used, with the checksums that were verified.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "capture", "path", "sha256", "content_sha256"],
+            "properties": {
+              "kind": {"enum": ["block", "previous-transaction"]},
+              "capture": {"type": "string"},
+              "path": {"type": "string"},
+              "sha256": {"$ref": "#/$defs/hex64"},
+              "content_sha256": {"$ref": "#/$defs/hex64"},
+              "height": {"type": "integer"},
+              "txid": {"$ref": "#/$defs/hex64"}
+            }
+          }
+        },
+        "checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["height", "hash", "transactions", "pool_changes", "lockbox_change", "fees", "value_created", "subsidy", "rule", "rule_holds", "allowed_capture_differences"],
+            "properties": {
+              "height": {"type": "integer"},
+              "hash": {"$ref": "#/$defs/hex64"},
+              "transactions": {"type": "integer"},
+              "pool_changes": {
+                "description": "Per value pool: the change the node reports and the change the transactions add up to.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["node", "derived", "match"],
+                  "properties": {"node": {"type": ["integer", "null"]}, "derived": {"type": "integer"}, "match": {"type": "boolean"}}
+                }
+              },
+              "lockbox_change": {"type": ["integer", "null"]},
+              "fees": {"type": "integer"},
+              "value_created": {"type": "integer"},
+              "subsidy": {"type": "integer"},
+              "rule": {"type": "string"},
+              "rule_holds": {"type": "boolean"},
+              "allowed_capture_differences": {"description": "Number of leaves in which the block's two captures differ in a way the manifest allows; null if the block has one capture.", "type": ["integer", "null"]}
+            }
+          }
+        },
+        "cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "txid", "block_height", "version", "shapes", "old_code_expected_to_differ", "fields", "before", "after"],
+            "properties": {
+              "id": {"type": "string"},
+              "txid": {"$ref": "#/$defs/hex64"},
+              "block_height": {"type": "integer"},
+              "version": {"type": "integer"},
+              "shapes": {"type": "array", "items": {"type": "string"}},
+              "old_code_expected_to_differ": {"type": "boolean"},
+              "fields": {
+                "description": "For every compared field: the expected value, what each revision reported, and whether each equals the expected value (null: the revision reports no such value).",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["expected", "before", "after", "before_matches", "after_matches"],
+                  "properties": {
+                    "expected": {"$ref": "#/$defs/value"},
+                    "before": {"$ref": "#/$defs/value"},
+                    "after": {"$ref": "#/$defs/value"},
+                    "before_matches": {"type": ["boolean", "null"]},
+                    "after_matches": {"type": ["boolean", "null"]}
+                  }
+                }
+              },
+              "before": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["exception", "matches_frozen", "differs_from_expected", "explained", "explanation"],
+                "properties": {
+                  "exception": {"$ref": "#/$defs/error"},
+                  "matches_frozen": {"description": "The old revision still reports what the manifest froze.", "type": "boolean"},
+                  "differs_from_expected": {"type": ["boolean", "null"]},
+                  "explained": {"description": "The old revision's record equals the expected values with the Orchard and Ironwood balances left out.", "type": "boolean"},
+                  "explanation": {"type": ["string", "null"]}
+                }
+              },
+              "after": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["exception", "matches_expected", "mismatches"],
+                "properties": {
+                  "exception": {"$ref": "#/$defs/error"},
+                  "matches_expected": {"type": "boolean"},
+                  "mismatches": {"type": "array", "items": {"type": "string"}}
+                }
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["cases", "fields_per_case", "after", "before", "checks"],
+          "properties": {
+            "cases": {"type": "integer"},
+            "fields_per_case": {"type": "integer"},
+            "after": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fields_compared", "fields_matching", "fields_mismatching", "cases_matching", "cases_mismatching"],
+              "properties": {
+                "fields_compared": {"type": "integer"},
+                "fields_matching": {"type": "integer"},
+                "fields_mismatching": {"type": "integer"},
+                "cases_matching": {"type": "integer"},
+                "cases_mismatching": {"type": "array", "items": {"type": "string"}}
+              }
+            },
+            "before": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fields_compared", "fields_matching", "fields_mismatching", "cases_differing_from_expected", "cases_differing_explained", "cases_differing_unexplained", "cases_expected_to_differ"],
+              "properties": {
+                "fields_compared": {"type": "integer"},
+                "fields_matching": {"type": "integer"},
+                "fields_mismatching": {"type": "integer"},
+                "cases_differing_from_expected": {"type": "array", "items": {"type": "string"}},
+                "cases_differing_explained": {"type": "integer"},
+                "cases_differing_unexplained": {"type": "array", "items": {"type": "string"}},
+                "cases_expected_to_differ": {"type": "array", "items": {"type": "string"}}
+              }
+            },
+            "checks": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["passed", "failed", "not_applicable"],
+              "properties": {
+                "passed": {"type": "integer"},
+                "failed": {"type": "array", "items": {"type": "string"}},
+                "not_applicable": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "verdict": {"enum": ["pass", "fail"]}
+      }
+    },
+    "transformer_results": {
+      "description": "The further layer: rows of GraphSense's TransformerUTXO. Present only with --with-transformer.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "manifest_sha256", "canonical", "checks", "cases", "verdict"],
+      "properties": {
+        "tool": {"$ref": "#/$defs/tool"},
+        "manifest_sha256": {"$ref": "#/$defs/hex64"},
+        "canonical": {"type": "boolean"},
+        "checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+        "cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "txid", "rows"],
+            "properties": {
+              "id": {"type": "string"},
+              "txid": {"$ref": "#/$defs/hex64"},
+              "rows": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["before", "after"],
+                "properties": {"before": {"$ref": "#/$defs/row"}, "after": {"$ref": "#/$defs/row"}}
+              }
+            }
+          }
+        },
+        "verdict": {"enum": ["pass", "fail"]}
+      }
+    },
+    "row": {
+      "description": "The accounting fields of one stored row.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["total_input", "total_output", "fee", "coinbase", "coinjoin"],
+      "properties": {
+        "total_input": {"$ref": "#/$defs/value"},
+        "total_output": {"$ref": "#/$defs/value"},
+        "fee": {"$ref": "#/$defs/value"},
+        "coinbase": {"type": ["boolean", "null"]},
+        "coinjoin": {"type": ["boolean", "null"]}
+      }
+    }
+  }
+}
