@@ -1,0 +1,371 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Summary of a gs-zec-validate scan run",
+ "description": "`results` is identical for the same blocks, revisions and tool version; `run` holds what varies. All amounts are integers in zatoshi. See docs/OPERATOR-TOOLS.md.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "results",
+  "results_sha256",
+  "run"
+ ],
+ "properties": {
+  "results": {
+   "$ref": "#/$defs/results"
+  },
+  "results_sha256": {
+   "$ref": "#/$defs/hex64"
+  },
+  "run": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "graphsense_lib_versions",
+    "node",
+    "python",
+    "requests",
+    "seconds",
+    "started_utc"
+   ],
+   "properties": {
+    "started_utc": {
+     "type": "string"
+    },
+    "seconds": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "node": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "python": {
+     "type": "string"
+    },
+    "graphsense_lib_versions": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "after",
+      "before"
+     ],
+     "properties": {
+      "before": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "after": {
+       "type": [
+        "string",
+        "null"
+       ]
+      }
+     }
+    },
+    "requests": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  }
+ },
+ "$defs": {
+  "hex64": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "count": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "zatoshi": {
+   "type": "integer"
+  },
+  "tool": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "name",
+    "version"
+   ],
+   "properties": {
+    "name": {
+     "const": "gs-zec-validate"
+    },
+    "version": {
+     "type": "string",
+     "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    }
+   }
+  },
+  "range": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "blocks",
+    "end",
+    "start"
+   ],
+   "properties": {
+    "start": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "end": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "blocks": {
+     "type": "integer",
+     "minimum": 1
+    }
+   }
+  },
+  "file_identity": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "additionalProperties": false,
+   "required": [
+    "git_blob",
+    "sha256"
+   ],
+   "properties": {
+    "git_blob": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{40}$"
+    },
+    "sha256": {
+     "$ref": "#/$defs/hex64"
+    }
+   }
+  },
+  "revision": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "found",
+    "is_pinned_code",
+    "pinned"
+   ],
+   "properties": {
+    "pinned": {
+     "description": "The release the manifest pins for this side.",
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "git_commit",
+      "package_tree_sha256",
+      "version"
+     ],
+     "properties": {
+      "version": {
+       "type": "string"
+      },
+      "git_commit": {
+       "type": "string",
+       "pattern": "^[0-9a-f]{40}$"
+      },
+      "package_tree_sha256": {
+       "$ref": "#/$defs/hex64"
+      }
+     }
+    },
+    "found": {
+     "description": "The graphsenselib package that ran: checksum over all its files, and the accounting files.",
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "files",
+      "package_file_count",
+      "package_tree_sha256"
+     ],
+     "properties": {
+      "package_tree_sha256": {
+       "$ref": "#/$defs/hex64"
+      },
+      "package_file_count": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "files": {
+       "type": "object",
+       "additionalProperties": {
+        "$ref": "#/$defs/file_identity"
+       }
+      }
+     }
+    },
+    "is_pinned_code": {
+     "type": "boolean"
+    }
+   }
+  },
+  "settings": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "with_coinjoin_filter",
+    "without_coinjoin_filter"
+   ],
+   "properties": {
+    "without_coinjoin_filter": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "with_coinjoin_filter": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  },
+  "txid": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "pool_totals": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "blocks",
+    "into_pool",
+    "out_of_pool",
+    "transactions"
+   ],
+   "properties": {
+    "blocks": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "transactions": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "out_of_pool": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "into_pool": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  },
+  "results": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "affected",
+    "canonical",
+    "coinjoin_screen",
+    "ironwood",
+    "orchard",
+    "range",
+    "revisions",
+    "summary_format",
+    "tool",
+    "transactions"
+   ],
+   "properties": {
+    "summary_format": {
+     "const": 1
+    },
+    "tool": {
+     "$ref": "#/$defs/tool"
+    },
+    "range": {
+     "$ref": "#/$defs/range"
+    },
+    "canonical": {
+     "type": "boolean"
+    },
+    "revisions": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "after",
+      "before"
+     ],
+     "properties": {
+      "before": {
+       "$ref": "#/$defs/revision"
+      },
+      "after": {
+       "$ref": "#/$defs/revision"
+      }
+     }
+    },
+    "transactions": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "orchard": {
+     "$ref": "#/$defs/pool_totals"
+    },
+    "ironwood": {
+     "$ref": "#/$defs/pool_totals"
+    },
+    "affected": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "blocks",
+      "transactions"
+     ],
+     "properties": {
+      "blocks": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "transactions": {
+       "type": "integer",
+       "minimum": 0
+      }
+     }
+    },
+    "coinjoin_screen": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "candidate_transactions",
+      "candidates",
+      "possible_after",
+      "possible_before"
+     ],
+     "properties": {
+      "possible_before": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "possible_after": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "candidates": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "candidate_transactions": {
+       "type": "array",
+       "items": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+         "type": [
+          "integer",
+          "string"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

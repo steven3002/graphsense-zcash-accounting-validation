@@ -43,6 +43,8 @@ jobs:
         run: |
           uv run gs-zec-validate.py install --with-transformer
           uv run gs-zec-validate.py run --with-transformer
+      - name: Operator commands end to end (compare-range and scan on the packaged evidence)
+        run: uv run --locked pytest tests/test_e2e_ranges.py
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:

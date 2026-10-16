@@ -1,6 +1,6 @@
 [project]
 name = "graphsense-zcash-accounting-validation"
-version = "1.0.1"
+version = "1.1.0"
 description = "Reproducible validation of GraphSense's Zcash accounting: old versus corrected graphsense-lib, against packaged mainnet evidence."
 readme = "README.md"
 license = "MIT"

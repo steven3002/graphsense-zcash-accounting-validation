@@ -21,7 +21,7 @@ It takes about ten minutes. Nothing here needs trust in the author's machine.
    - the `results` checksum is
 
      ```
-     74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc
+     5610404f07c82715d0c8722b2b7170b55aa7f06eaf82828ee536c42d06c70dd0
      ```
 
      and the `published` line says `identical`.
@@ -109,3 +109,25 @@ After the three experiments, `uv run gs-zec-validate.py run` passes again with t
 It says that the comparison of graphsense-lib 2.16.3 and 2.16.4 on this dataset gives the published result on your
 machine. It does not say that all of GraphSense's Zcash accounting is correct; the README lists what is outside
 this validation.
+
+## Reviewing the operator guide and its results
+
+[OPERATOR-GUIDE.md](OPERATOR-GUIDE.md) and the summaries in [`../results/`](../results/) need a Zcash node to
+reproduce; everything else on this page does not.
+
+1. Install the environments of the transformer layer: `uv run gs-zec-validate.py install --with-transformer`.
+2. Reproduce one representative window against your node, for example the first 10,000 blocks of the Ironwood range:
+
+   ```
+   uv run gs-zec-validate.py compare-range --start 3428143 --end 3438142 --rpc-url http://127.0.0.1:8232 --rpc-cookie-file <your node's .cookie>
+   ```
+
+   The run takes several minutes and up to a few GB of memory. Its last block must end in `verdict     PASS` and
+   show the `published` line as `identical`: the results checksum depends only on the node's data for the range, the
+   two pinned releases and the tool's version, not on the node's software or your machine.
+3. Optional, the census of section 3 of the guide: `uv run gs-zec-validate.py scan --start 1687104 --end 3518201`
+   with the same node options, and compare the `results` checksum it prints with `results_sha256` in
+   `results/scan-1687104-3518201.json`. It takes many hours; the published file was made from consecutive segments
+   whose results add up exactly (the guide's A4).
+4. Read the guide against the code it cites. Every line number refers to graphsense-lib 2.17.0 unless another
+   version is named; the appendix lists every test with its command.

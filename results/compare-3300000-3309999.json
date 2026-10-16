@@ -1,0 +1,210 @@
+{
+ "matches_published": null,
+ "problems": [],
+ "published_results_sha256": null,
+ "results": {
+  "canonical": true,
+  "changed": {
+   "blocks_with_changed_transactions": 5074,
+   "coinbase_total_output": 0,
+   "fee": 10314,
+   "input_count": 6454,
+   "output_count": 3860,
+   "total_input": 6454,
+   "total_output": 3860,
+   "transactions": 10314
+  },
+  "clustering_edges": {
+   "after": {
+    "with_coinjoin_filter": 2614,
+    "without_coinjoin_filter": 2616
+   },
+   "before": {
+    "with_coinjoin_filter": 2614,
+    "without_coinjoin_filter": 2616
+   }
+  },
+  "clustering_input_sets_changed": {
+   "multi_input_address_set": {
+    "with_coinjoin_filter": 0,
+    "without_coinjoin_filter": 0
+   },
+   "spark_regular_inputs": {
+    "with_coinjoin_filter": 0,
+    "without_coinjoin_filter": 0
+   }
+  },
+  "coinjoin_flags": {
+   "after": 2,
+   "before": 2,
+   "false_to_true": 0,
+   "flagged_transactions": {
+    "after": [
+     "9d15d12cc65131f4c4e6421329734217d7de6446f85a7e584e2a948cf3e18791",
+     "974eef7b782efe5326ab103492202a731aa72c22c172a556a828e313a6af0831"
+    ],
+    "before": [
+     "9d15d12cc65131f4c4e6421329734217d7de6446f85a7e584e2a948cf3e18791",
+     "974eef7b782efe5326ab103492202a731aa72c22c172a556a828e313a6af0831"
+    ]
+   },
+   "true_to_false": 0
+  },
+  "differences_explained": {
+   "examples": [],
+   "unexplained": 0
+  },
+  "fees_of_non_coinbase_transactions": {
+   "after": {
+    "negative": 0,
+    "zero": 0
+   },
+   "before": {
+    "negative": 4489,
+    "zero": 1922
+   }
+  },
+  "newly_accounted": {
+   "ironwood": {
+    "into_pool": 0,
+    "out_of_pool": 0,
+    "transactions": 0
+   },
+   "orchard": {
+    "into_pool": 10038211623973,
+    "out_of_pool": 8863854509414,
+    "transactions": 10314
+   }
+  },
+  "range": {
+   "blocks": 10000,
+   "end": 3309999,
+   "start": 3300000
+  },
+  "records_sha256": {
+   "after": "57b00a5d950efb5a575ac37c810f960e5c28574c5f66cb4a101f93dd01edc6a1",
+   "before": "861087987779426070ee1a22fc52d67cd1b2d671d3d34f37fcd30fe02e46bcd5"
+  },
+  "relation_estimates": {
+   "absolute_change": 2395722144,
+   "estimated_value_after_of_changed": 4826622321,
+   "estimated_value_before_of_changed": 7222344465,
+   "largest_change": 1899879801,
+   "pairs_after": 129928,
+   "pairs_before": 129928,
+   "pairs_changed": 11,
+   "pairs_only_after": 0,
+   "pairs_only_before": 0,
+   "transactions_with_changed_pairs": 11
+  },
+  "revisions": {
+   "after": {
+    "found": {
+     "files": {
+      "graphsenselib/ingest/rpc_eth.py": {
+       "git_blob": "044d24009345fcc01fccd89b7606fb0617729013",
+       "sha256": "467822eb5064cbc3d3b3dabb615f27ac005abd813618b533729ccc4cacff930d"
+      },
+      "graphsenselib/ingest/rpc_utxo.py": {
+       "git_blob": "63f5453950251f15d4a909c7a7eff556adf4dbbc",
+       "sha256": "e694c87787d7f6b82fc19dd62f6b64b1d998d63cbec61bcc9dac08749ff707ba"
+      },
+      "graphsenselib/ingest/transform.py": {
+       "git_blob": "f27dbe31c59bf52c0714dd28970c0dc92cf863a2",
+       "sha256": "38ab7237e3cabd40155a9c2575fefe6b9c8530c79d1595f07631c2e496ee4684"
+      },
+      "graphsenselib/ingest/utxo.py": {
+       "git_blob": "8f927d5262eac20ac6cbf68acdd4c71193a4a407",
+       "sha256": "5f676cd2d91c466fd47a01c5e1ef978684bd4bb8fcba50c624f7dd2afbdb273c"
+      },
+      "graphsenselib/utils/pubkey_to_address.py": {
+       "git_blob": "b7330be5a8cf4ec25feda69cfb9b897e71472a3e",
+       "sha256": "25f4908f95e197e058f9ca235af69a2677bfd9832bf1a3b74c3639e6286fbe1c"
+      }
+     },
+     "package_file_count": 353,
+     "package_tree_sha256": "675521888b904da1b953afe786334b762098d96df67c8c2392d1467d0d2f4b6f"
+    },
+    "is_pinned_code": true,
+    "pinned": {
+     "git_commit": "411b987a0f246943d4ee70421f43b17a3cba8f8c",
+     "package_tree_sha256": "675521888b904da1b953afe786334b762098d96df67c8c2392d1467d0d2f4b6f",
+     "version": "2.16.4"
+    }
+   },
+   "before": {
+    "found": {
+     "files": {
+      "graphsenselib/ingest/rpc_eth.py": {
+       "git_blob": "044d24009345fcc01fccd89b7606fb0617729013",
+       "sha256": "467822eb5064cbc3d3b3dabb615f27ac005abd813618b533729ccc4cacff930d"
+      },
+      "graphsenselib/ingest/rpc_utxo.py": {
+       "git_blob": "1ad7ca79e1e3c14dd34d078f472b51435802d273",
+       "sha256": "91dc581c52474ccc7c16491902b79d04a45be408ed27506569eab13ced55e6b2"
+      },
+      "graphsenselib/ingest/transform.py": {
+       "git_blob": "f27dbe31c59bf52c0714dd28970c0dc92cf863a2",
+       "sha256": "38ab7237e3cabd40155a9c2575fefe6b9c8530c79d1595f07631c2e496ee4684"
+      },
+      "graphsenselib/ingest/utxo.py": {
+       "git_blob": "8f927d5262eac20ac6cbf68acdd4c71193a4a407",
+       "sha256": "5f676cd2d91c466fd47a01c5e1ef978684bd4bb8fcba50c624f7dd2afbdb273c"
+      },
+      "graphsenselib/utils/pubkey_to_address.py": {
+       "git_blob": "b7330be5a8cf4ec25feda69cfb9b897e71472a3e",
+       "sha256": "25f4908f95e197e058f9ca235af69a2677bfd9832bf1a3b74c3639e6286fbe1c"
+      }
+     },
+     "package_file_count": 354,
+     "package_tree_sha256": "4bb3029346d707d19d9c63a53a60ec1c27a11066d0b782d5451fe751e09132c4"
+    },
+    "is_pinned_code": true,
+    "pinned": {
+     "git_commit": "c02cbdb544fe25daf4bef5d4a14cb455608253f3",
+     "package_tree_sha256": "4bb3029346d707d19d9c63a53a60ec1c27a11066d0b782d5451fe751e09132c4",
+     "version": "2.16.3"
+    }
+   }
+  },
+  "summary_format": 1,
+  "tool": {
+   "name": "gs-zec-validate",
+   "version": "1.1.0"
+  },
+  "transactions": {
+   "coinbase": 10000,
+   "non_coinbase": 58389,
+   "total": 68389
+  },
+  "unresolved_inputs": {
+   "after": 0,
+   "before": 0
+  }
+ },
+ "results_sha256": "e2f16afe701ad3f562ea0202f31805d6f471719a1081799aaa3812feafe97b5b",
+ "run": {
+  "graphsense_lib_versions": {
+   "after": "2.16.4",
+   "before": "2.16.3"
+  },
+  "node": "/Zebra:6.4.2/",
+  "platform": "Linux x86_64",
+  "python": "3.12.3",
+  "seconds": 131,
+  "started_utc": "2026-10-15T16:38:03Z",
+  "worker_answers": {
+   "after": {
+    "getblock": 10000,
+    "getblockhash": 10000,
+    "getrawtransaction": 24035
+   },
+   "before": {
+    "getblock": 10000,
+    "getblockhash": 10000,
+    "getrawtransaction": 24035
+   }
+  }
+ },
+ "verdict": "pass"
+}

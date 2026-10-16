@@ -1,0 +1,208 @@
+{
+ "matches_published": null,
+ "problems": [],
+ "published_results_sha256": null,
+ "results": {
+  "canonical": true,
+  "changed": {
+   "blocks_with_changed_transactions": 898,
+   "coinbase_total_output": 0,
+   "fee": 6727,
+   "input_count": 3126,
+   "output_count": 3601,
+   "total_input": 3126,
+   "total_output": 3601,
+   "transactions": 6727
+  },
+  "clustering_edges": {
+   "after": {
+    "with_coinjoin_filter": 359,
+    "without_coinjoin_filter": 360
+   },
+   "before": {
+    "with_coinjoin_filter": 359,
+    "without_coinjoin_filter": 360
+   }
+  },
+  "clustering_input_sets_changed": {
+   "multi_input_address_set": {
+    "with_coinjoin_filter": 0,
+    "without_coinjoin_filter": 0
+   },
+   "spark_regular_inputs": {
+    "with_coinjoin_filter": 0,
+    "without_coinjoin_filter": 0
+   }
+  },
+  "coinjoin_flags": {
+   "after": 1,
+   "before": 1,
+   "false_to_true": 0,
+   "flagged_transactions": {
+    "after": [
+     "3e5988d030dacc743d2d71bf80584c8aac59674af5e3c3f81a6f3482420b9872"
+    ],
+    "before": [
+     "3e5988d030dacc743d2d71bf80584c8aac59674af5e3c3f81a6f3482420b9872"
+    ]
+   },
+   "true_to_false": 0
+  },
+  "differences_explained": {
+   "examples": [],
+   "unexplained": 0
+  },
+  "fees_of_non_coinbase_transactions": {
+   "after": {
+    "negative": 0,
+    "zero": 2
+   },
+   "before": {
+    "negative": 2741,
+    "zero": 386
+   }
+  },
+  "newly_accounted": {
+   "ironwood": {
+    "into_pool": 0,
+    "out_of_pool": 0,
+    "transactions": 0
+   },
+   "orchard": {
+    "into_pool": 4749470805370,
+    "out_of_pool": 4717665619545,
+    "transactions": 6727
+   }
+  },
+  "range": {
+   "blocks": 1000,
+   "end": 2000999,
+   "start": 2000000
+  },
+  "records_sha256": {
+   "after": "af88af735dc20217a6a441873b4bd586a77c6cbe006bb90345b4b6bb08e22e89",
+   "before": "b8c466b493944b5262668d6f59902043822314a2a0a374e88fb027df06cfd49e"
+  },
+  "relation_estimates": {
+   "absolute_change": 423415,
+   "estimated_value_after_of_changed": 301216585,
+   "estimated_value_before_of_changed": 301640000,
+   "largest_change": 423415,
+   "pairs_after": 31154,
+   "pairs_before": 31154,
+   "pairs_changed": 1,
+   "pairs_only_after": 0,
+   "pairs_only_before": 0,
+   "transactions_with_changed_pairs": 1
+  },
+  "revisions": {
+   "after": {
+    "found": {
+     "files": {
+      "graphsenselib/ingest/rpc_eth.py": {
+       "git_blob": "044d24009345fcc01fccd89b7606fb0617729013",
+       "sha256": "467822eb5064cbc3d3b3dabb615f27ac005abd813618b533729ccc4cacff930d"
+      },
+      "graphsenselib/ingest/rpc_utxo.py": {
+       "git_blob": "63f5453950251f15d4a909c7a7eff556adf4dbbc",
+       "sha256": "e694c87787d7f6b82fc19dd62f6b64b1d998d63cbec61bcc9dac08749ff707ba"
+      },
+      "graphsenselib/ingest/transform.py": {
+       "git_blob": "f27dbe31c59bf52c0714dd28970c0dc92cf863a2",
+       "sha256": "38ab7237e3cabd40155a9c2575fefe6b9c8530c79d1595f07631c2e496ee4684"
+      },
+      "graphsenselib/ingest/utxo.py": {
+       "git_blob": "8f927d5262eac20ac6cbf68acdd4c71193a4a407",
+       "sha256": "5f676cd2d91c466fd47a01c5e1ef978684bd4bb8fcba50c624f7dd2afbdb273c"
+      },
+      "graphsenselib/utils/pubkey_to_address.py": {
+       "git_blob": "b7330be5a8cf4ec25feda69cfb9b897e71472a3e",
+       "sha256": "25f4908f95e197e058f9ca235af69a2677bfd9832bf1a3b74c3639e6286fbe1c"
+      }
+     },
+     "package_file_count": 353,
+     "package_tree_sha256": "675521888b904da1b953afe786334b762098d96df67c8c2392d1467d0d2f4b6f"
+    },
+    "is_pinned_code": true,
+    "pinned": {
+     "git_commit": "411b987a0f246943d4ee70421f43b17a3cba8f8c",
+     "package_tree_sha256": "675521888b904da1b953afe786334b762098d96df67c8c2392d1467d0d2f4b6f",
+     "version": "2.16.4"
+    }
+   },
+   "before": {
+    "found": {
+     "files": {
+      "graphsenselib/ingest/rpc_eth.py": {
+       "git_blob": "044d24009345fcc01fccd89b7606fb0617729013",
+       "sha256": "467822eb5064cbc3d3b3dabb615f27ac005abd813618b533729ccc4cacff930d"
+      },
+      "graphsenselib/ingest/rpc_utxo.py": {
+       "git_blob": "1ad7ca79e1e3c14dd34d078f472b51435802d273",
+       "sha256": "91dc581c52474ccc7c16491902b79d04a45be408ed27506569eab13ced55e6b2"
+      },
+      "graphsenselib/ingest/transform.py": {
+       "git_blob": "f27dbe31c59bf52c0714dd28970c0dc92cf863a2",
+       "sha256": "38ab7237e3cabd40155a9c2575fefe6b9c8530c79d1595f07631c2e496ee4684"
+      },
+      "graphsenselib/ingest/utxo.py": {
+       "git_blob": "8f927d5262eac20ac6cbf68acdd4c71193a4a407",
+       "sha256": "5f676cd2d91c466fd47a01c5e1ef978684bd4bb8fcba50c624f7dd2afbdb273c"
+      },
+      "graphsenselib/utils/pubkey_to_address.py": {
+       "git_blob": "b7330be5a8cf4ec25feda69cfb9b897e71472a3e",
+       "sha256": "25f4908f95e197e058f9ca235af69a2677bfd9832bf1a3b74c3639e6286fbe1c"
+      }
+     },
+     "package_file_count": 354,
+     "package_tree_sha256": "4bb3029346d707d19d9c63a53a60ec1c27a11066d0b782d5451fe751e09132c4"
+    },
+    "is_pinned_code": true,
+    "pinned": {
+     "git_commit": "c02cbdb544fe25daf4bef5d4a14cb455608253f3",
+     "package_tree_sha256": "4bb3029346d707d19d9c63a53a60ec1c27a11066d0b782d5451fe751e09132c4",
+     "version": "2.16.3"
+    }
+   }
+  },
+  "summary_format": 1,
+  "tool": {
+   "name": "gs-zec-validate",
+   "version": "1.1.0"
+  },
+  "transactions": {
+   "coinbase": 1000,
+   "non_coinbase": 12532,
+   "total": 13532
+  },
+  "unresolved_inputs": {
+   "after": 0,
+   "before": 0
+  }
+ },
+ "results_sha256": "7e91933b63c2b0fbea11656957e6f2e55a43ccc596dd226b5f95f2f5597fa53a",
+ "run": {
+  "graphsense_lib_versions": {
+   "after": "2.16.4",
+   "before": "2.16.3"
+  },
+  "node": "/Zebra:6.4.2/",
+  "platform": "Linux x86_64",
+  "python": "3.12.3",
+  "seconds": 44,
+  "started_utc": "2026-10-15T16:37:18Z",
+  "worker_answers": {
+   "after": {
+    "getblock": 1000,
+    "getblockhash": 1000,
+    "getrawtransaction": 4186
+   },
+   "before": {
+    "getblock": 1000,
+    "getblockhash": 1000,
+    "getrawtransaction": 4186
+   }
+  }
+ },
+ "verdict": "pass"
+}

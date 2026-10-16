@@ -56,8 +56,9 @@ uv run --locked ruff format --check .
 uv run --locked ty check
 ```
 
-The end-to-end tests in `tests/test_e2e.py` need the two environments; without them they are skipped, and a
-skipped test is not a passed test.
+The end-to-end tests in `tests/test_e2e.py` need the two environments, and those in `tests/test_e2e_ranges.py`
+(`compare-range` and `scan`) the environments of the transformer layer (`install --with-transformer`); without them
+they are skipped, and a skipped test is not a passed test.
 
 ## Styleguides
 

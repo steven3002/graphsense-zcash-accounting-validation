@@ -1,0 +1,237 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Report of a gs-zec-validate check run",
+ "description": "What the stored Zcash rows of a block range show against the node. See docs/OPERATOR-TOOLS.md.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "results",
+  "results_sha256",
+  "run"
+ ],
+ "properties": {
+  "results": {
+   "$ref": "#/$defs/results"
+  },
+  "results_sha256": {
+   "$ref": "#/$defs/hex64"
+  },
+  "run": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "graphsense_lib",
+    "node",
+    "python",
+    "raw_keyspace",
+    "seconds",
+    "started_utc"
+   ],
+   "properties": {
+    "started_utc": {
+     "type": "string"
+    },
+    "seconds": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "node": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "python": {
+     "type": "string"
+    },
+    "graphsense_lib": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "raw_keyspace": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  }
+ },
+ "$defs": {
+  "hex64": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "tool": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "name",
+    "version"
+   ],
+   "properties": {
+    "name": {
+     "const": "gs-zec-validate"
+    },
+    "version": {
+     "type": "string",
+     "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    }
+   }
+  },
+  "range": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "blocks",
+    "end",
+    "start"
+   ],
+   "properties": {
+    "start": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "end": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "blocks": {
+     "type": "integer",
+     "minimum": 1
+    }
+   }
+  },
+  "tally": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "checked",
+    "failed"
+   ],
+   "properties": {
+    "checked": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "failed": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  },
+  "results": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "check_format",
+    "examples",
+    "range",
+    "rules",
+    "sinks",
+    "stored",
+    "tool",
+    "verdict"
+   ],
+   "properties": {
+    "check_format": {
+     "const": 1
+    },
+    "tool": {
+     "$ref": "#/$defs/tool"
+    },
+    "range": {
+     "$ref": "#/$defs/range"
+    },
+    "sinks": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "enum": [
+       "cassandra",
+       "delta"
+      ]
+     }
+    },
+    "rules": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+       "rows": {
+        "$ref": "#/$defs/tally"
+       },
+       "shielded": {
+        "$ref": "#/$defs/tally"
+       },
+       "transparent": {
+        "$ref": "#/$defs/tally"
+       },
+       "fees": {
+        "$ref": "#/$defs/tally"
+       },
+       "totals": {
+        "$ref": "#/$defs/tally"
+       },
+       "stored-fee": {
+        "$ref": "#/$defs/tally"
+       },
+       "dataset": {
+        "$ref": "#/$defs/tally"
+       }
+      }
+     }
+    },
+    "stored": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "blocks",
+       "coinjoin_transactions",
+       "transactions"
+      ],
+      "properties": {
+       "blocks": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "transactions": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "coinjoin_transactions": {
+        "type": "integer",
+        "minimum": 0
+       }
+      }
+     }
+    },
+    "examples": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "verdict": {
+     "enum": [
+      "pass",
+      "fail"
+     ]
+    }
+   }
+  }
+ }
+}

@@ -8,6 +8,12 @@ The outcome is a pass or a fail, a machine-readable report, and one checksum to 
 
 This is an independent project. It is not part of the GraphSense project and is not endorsed by it.
 
+**Operating GraphSense?** Rows ingested by graphsense-lib up to 2.16.3 keep the wrong values until they are ingested
+again. [docs/OPERATOR-GUIDE.md](docs/OPERATOR-GUIDE.md) explains how to repair the Zcash history and rebuild the
+derived data, what changes, and how to check the result, with representative before-and-after results from mainnet
+in [results/](results/). The commands `compare-range`, `scan` and `check` run those comparisons and checks against
+your own node and data ([docs/OPERATOR-TOOLS.md](docs/OPERATOR-TOOLS.md)).
+
 ## Background in four lines
 
 graphsense-lib up to 2.16.3 read the value that enters or leaves the Sprout and Sapling pools of a Zcash
@@ -76,13 +82,13 @@ The last lines of a passing run:
 
 ```
 ----- gs-zec-validate confirmation -----
-tool        gs-zec-validate 1.0.1
+tool        gs-zec-validate 1.1.0
 dataset     1.0.0 (manifest sha256 9b945a5e1a4468502704c9ba39b95f646959aaf4028553fc5c5c58b66443fdac)
 before      graphsense-lib 2.16.3 (v2.16.3, commit c02cbdb544fe), code checksum 4bb3029346d707d1… — pinned code
 after       graphsense-lib 2.16.4 (v2.16.4, commit 411b987a0f24), code checksum 675521888b904da1… — pinned code
 cases       47; after matches the expected values on 47; before differs on 13, 13 of them explained
-results     sha256 74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc
-published   sha256 74bec033e6f9452d397594d9a97603634a79b362b98b4bc2a3b22f8b98a020cc — identical
+results     sha256 5610404f07c82715d0c8722b2b7170b55aa7f06eaf82828ee536c42d06c70dd0
+published   sha256 5610404f07c82715d0c8722b2b7170b55aa7f06eaf82828ee536c42d06c70dd0 — identical
 verdict     PASS (exit status 0)
 python      3.12.3 (cpython) on Linux x86_64; environments: before 3.12.3, after 3.12.3
 ----------------------------------------
@@ -154,11 +160,14 @@ uv run gs-zec-validate.py explain 1687194/4
 ## What is not validated
 
 A pass means: these 47 transactions, these two graphsense-lib releases, this evidence. It does not mean that all
-of GraphSense's Zcash accounting is correct. In particular this repository does not check:
+of GraphSense's Zcash accounting is correct. In particular the validation does not check:
 
-- transactions outside the dataset, or how many transactions on the chain were affected;
-- anything after the ingest step: GraphSense's Spark transformation, its databases, clustering;
-- the effect of the correction on coinjoin detection (the optional layer below only reports the flag);
+- transactions outside the dataset, or how many transactions on the chain were affected (the operator commands
+  measure that on block ranges of a node: [docs/OPERATOR-TOOLS.md](docs/OPERATOR-TOOLS.md));
+- anything after the ingest step: GraphSense's Spark transformation, its databases, clustering (the operator guide
+  describes what was run there);
+- the effect of the correction on coinjoin detection (the optional layer below only reports the flag;
+  `compare-range` and `scan` report it for block ranges);
 - value entering the Sprout pool, which has not been possible on mainnet since 2020 and does not occur in the dataset;
 - other currencies, and graphsense-lib releases other than the two pinned ones (but see "Other revisions").
 
@@ -217,6 +226,9 @@ Both report the expected values on all 47 transactions.
 
 | Page | Content |
 |---|---|
+| [docs/OPERATOR-GUIDE.md](docs/OPERATOR-GUIDE.md) | Repairing the Zcash history in GraphSense: re-ingestion, full rebuild, what changes, checks |
+| [docs/OPERATOR-TOOLS.md](docs/OPERATOR-TOOLS.md) | The commands `compare-range`, `scan` and `check`, and their output formats |
+| [results/](results/) | Representative before-and-after results from mainnet, as `compare-range` and `scan` wrote them |
 | [docs/REVIEWING.md](docs/REVIEWING.md) | Checklist for confirming reproducibility, and how to make the validation fail on purpose |
 | [docs/METHOD.md](docs/METHOD.md) | Formulas, sign conventions, where expected values come from, limits |
 | [docs/DATASET.md](docs/DATASET.md) | Every case with its shapes, expected values and the old release's values |

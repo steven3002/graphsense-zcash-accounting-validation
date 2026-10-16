@@ -41,7 +41,7 @@ wheels = [
 
 [[package]]
 name = "graphsense-zcash-accounting-validation"
-version = "1.0.1"
+version = "1.1.0"
 source = { virtual = "." }
 
 [package.dev-dependencies]

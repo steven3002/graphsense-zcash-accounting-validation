@@ -6,10 +6,12 @@ environments and are skipped when those have not been installed.
 """
 
 import copy
+import http.server
 import json
 import os
 import shutil
 import sys
+import threading
 
 import pytest
 
@@ -182,3 +184,66 @@ def fake_run(monkeypatch, manifest, tmp_path):
 
 def environments_installed():
     return all(os.path.isfile(envs.env_python(ENV_DIR, side)) for side in envs.SIDES)
+
+
+# Block ranges: a node answering from dictionaries, and a JSON-RPC server for the node client.
+
+
+class FakeNode:
+    """Answers getblock and getrawtransaction from dictionaries, as a node would (result bytes and parsed value)."""
+
+    def __init__(self, blocks, transactions):
+        self.blocks, self.transactions = blocks, transactions
+        self.asked = []
+
+    def result(self, method, params, parse_float=float):
+        self.asked.append((method, params[0]))
+        if method == "getblock":
+            value = self.blocks[int(params[0])]
+        else:
+            value = self.transactions[params[0]]
+        content = json.dumps(value, separators=(",", ":")).encode()
+        return json.loads(content, parse_float=parse_float), content
+
+
+def tx(txid, *spent):
+    return {"txid": txid, "vin": [{"txid": item, "vout": 0} for item in spent] or [{"coinbase": "00"}]}
+
+
+def chain():
+    """Blocks 10 to 12. Block 11 spends an output of block 10 and two older ones; block 12 one older again."""
+    blocks = {
+        10: {"height": 10, "hash": "h10", "tx": [tx("c10"), tx("t10", "old1")]},
+        11: {"height": 11, "hash": "h11", "tx": [tx("c11"), tx("t11", "t10", "old2", "old1")]},
+        12: {"height": 12, "hash": "h12", "tx": [tx("c12"), tx("t12a", "old3"), tx("t12b", "t12a")]},
+    }
+    transactions = {name: {"txid": name, "vout": [{"n": 0, "valueZat": 1}]} for name in ("old1", "old2", "old3")}
+    return blocks, transactions
+
+
+class FakeNodeServer:
+    """A local HTTP server; `reply(body_dict) -> (status, bytes)` decides the answer to each request."""
+
+    def __init__(self, reply):
+        received = self.received = []
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def do_POST(self):
+                body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+                received.append((body, self.headers.get("Authorization")))
+                status, payload = reply(body)
+                self.send_response(status)
+                self.send_header("Content-Length", str(len(payload)))
+                self.end_headers()
+                self.wfile.write(payload)
+
+            def log_message(self, format, *args):
+                pass
+
+        self.server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        threading.Thread(target=self.server.serve_forever, daemon=True).start()
+        self.url = f"http://127.0.0.1:{self.server.server_address[1]}"
+
+    def close(self):
+        self.server.shutdown()
+        self.server.server_close()

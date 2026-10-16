@@ -6,6 +6,32 @@ rule for the dataset's.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-16
+
+For operators of GraphSense: a guide to repairing the Zcash history, three commands that run the comparisons and
+checks it describes against a node and against GraphSense's stored data, and representative results from mainnet.
+
+- New: [docs/OPERATOR-GUIDE.md](docs/OPERATOR-GUIDE.md), how to re-ingest the affected history into the Cassandra
+  raw keyspace and the Delta lake, why the derived data needs a full rebuild, what changes in transaction
+  accounting, relation estimates, coinjoin flags and clusters, how to check the result, which stored fields carry
+  what, and the environment it was all run in.
+- New command `compare-range`: runs graphsense-lib 2.16.3 and 2.16.4 (or other revisions) on the same block range of
+  a node and summarises what changes: totals and fees, newly accounted Orchard and Ironwood value, coinjoin flags,
+  clustering input sets and relation estimates. Writes `summary.json`, `summary.md` and
+  `changed-transactions.csv`; can keep the node's answers and run again from them offline.
+- New command `scan`: lists the blocks of a range whose transactions carry Orchard or Ironwood value, and the
+  transactions whose coinjoin flag could change with the correction.
+- New command `check`: compares the Zcash rows a GraphSense installation stored (Cassandra raw keyspace, Delta lake)
+  block by block with the node.
+- The output formats of the three commands are versioned and described by JSON Schemas in `manifest/`;
+  [docs/OPERATOR-TOOLS.md](docs/OPERATOR-TOOLS.md) documents the commands and every member.
+- New: [results/](results/), the summaries of `compare-range` on five mainnet windows and of `scan` over the whole
+  affected range.
+- `install`, `run`, `explain`, `code-checksum` and `verify-node` behave as in 1.0.1. Dataset 1.0.0 is unchanged.
+- Tool 1.1.0. Published results checksum: `5610404f07c82715d0c8722b2b7170b55aa7f06eaf82828ee536c42d06c70dd0`
+  (transformer layer: `325ce06572bb93a059763407182cab0d6e7129b814d85d74e42b7401e6b8e10e`). It differs from the checksum of 1.0.1 only because the tool's
+  version is part of the results.
+
 ## [1.0.1] - 2026-10-08
 
 - The workflow also runs the validation with two later graphsense-lib revisions in the place of 2.16.4: release

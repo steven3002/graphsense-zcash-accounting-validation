@@ -79,9 +79,9 @@ def summarise(cases, checks):
     }
 
 
-def validate_report(root, report):
-    """Validate the report against its published schema. Returns a list of problems."""
-    with open(os.path.join(root, *REPORT_SCHEMA_PATH.split("/")), encoding="utf-8") as handle:
+def validate_report(root, report, schema_path=REPORT_SCHEMA_PATH):
+    """Validate a document against one of the published schemas. Returns a list of problems."""
+    with open(os.path.join(root, *schema_path.split("/")), encoding="utf-8") as handle:
         rules = json.load(handle)
     return schema.validate(report, rules)
 

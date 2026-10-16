@@ -23,6 +23,17 @@ It contains the following files that come from graphsense-lib, unchanged.
 - They are the two code revisions this repository compares. They are carried here so that the comparison still
   works if a release is ever removed from PyPI.
 
+## Logic reproduced from graphsense-lib and graphsense-spark
+
+No code of either project is copied into this repository's own modules. Two pieces of logic are written again so
+that the operator commands compute what GraphSense computes:
+
+- `gs_zec_validate/capture.py`, `_split`: the block-range splitting of graphsense-lib's `split_blockrange`
+  (`ingest/source.py`), so that `compare-range` processes a range in the pieces graphsense-lib's ingest uses.
+- `gs_zec_validate/relations.py`: the relation estimate and the clustering input set of graphsense-spark's
+  `Transformator.plainAddressRelations` and `Transformator.plainAddressCluster` (Scala, in the `spark/` directory of
+  the graphsense-lib repository), written in Python; the module cites the Scala lines.
+
 ## Licence of that material
 
 graphsense-lib is published under the MIT licence:
@@ -50,6 +61,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+graphsense-spark (the `spark/` directory of graphsense-lib) is published under the same licence terms, with the
+copyright line "Copyright (c) 2021 AIT Austrian Institute of Technology" (`spark/LICENSE`).
 
 Everything else in this repository is covered by `LICENSE` (MIT, Copyright (c) 2026 Steven Hert).
 The evidence files in `evidence/zebra-6.4.2/` are public Zcash mainnet data as a node returns it.

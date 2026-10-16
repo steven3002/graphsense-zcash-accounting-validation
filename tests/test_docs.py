@@ -208,3 +208,127 @@ def test_the_failure_lines_quoted_in_the_documentation_are_real(fake_run, copy_o
     reviewing = read("docs", "REVIEWING.md")
     quoted = reviewing[reviewing.index("case 3463373/2 (6f37465a") :].split("```")[0].strip().splitlines()
     assert len(quoted) == 3 and all(line in text for line in quoted)
+
+
+def _schema_members(path):
+    with open(os.path.join(ROOT, *path.split("/")), encoding="utf-8") as handle:
+        schema = json.load(handle)
+    names = set()
+
+    def collect(node):
+        if isinstance(node, dict):
+            names.update(node.get("properties", {}))
+            for value in node.values():
+                collect(value)
+        elif isinstance(node, list):
+            for value in node:
+                collect(value)
+
+    collect(schema)
+    return names
+
+
+def test_every_member_of_the_operator_outputs_is_documented():
+    page = read("docs", "OPERATOR-TOOLS.md")
+    for path in (
+        "manifest/compare-summary.schema.json",
+        "manifest/scan-summary.schema.json",
+        "manifest/check-report.schema.json",
+    ):
+        missing = sorted(name for name in _schema_members(path) if f"`{name}" not in page and f".{name}`" not in page)
+        assert missing == [], (path, missing)
+
+
+def test_every_check_rule_and_exit_status_is_documented():
+    from gs_zec_validate import checks, cli
+
+    tools, guide = read("docs", "OPERATOR-TOOLS.md"), read("docs", "OPERATOR-GUIDE.md")
+    for rule in checks.RULES:
+        assert f"| `{rule}` |" in tools, rule
+    sections = {heading: body for heading, body in re.findall(r"^## (.+)\n((?:(?!^## ).*\n)*)", tools, re.MULTILINE)}
+    for command, codes in (
+        ("compare-range", cli.RANGE_EXIT_CODES),
+        ("scan", cli.SCAN_EXIT_CODES),
+        ("check", cli.CHECK_EXIT_CODES),
+    ):
+        documented = re.findall(r"^\| (\d) \| ", sections[command], re.MULTILINE)
+        assert documented == re.findall(r"^  (\d)  ", codes, re.MULTILINE), command
+    assert "check" in guide and "compare-range" in guide and "scan" in guide
+
+
+def test_the_readme_points_to_the_operator_pages():
+    readme = read("README.md")
+    assert "docs/OPERATOR-GUIDE.md" in readme and "docs/OPERATOR-TOOLS.md" in readme
+
+
+def test_no_unfinished_markers_in_the_documentation():
+    for folder in (".", "docs", "results"):
+        for name in sorted(os.listdir(os.path.join(ROOT, folder))):
+            if name.endswith((".md", ".json")):
+                assert "@@" not in read(folder, name), (folder, name)
+
+
+def _range_label(results):
+    return f"{results['range']['start']:,} – {results['range']['end']:,}"
+
+
+def results_tables(root=ROOT):
+    """The two tables of section 7 of the operator guide, built from the published compare-range summaries."""
+    documents = []
+    folder = os.path.join(root, "results")
+    for name in sorted(os.listdir(folder)):
+        if name.startswith("compare-") and name.endswith(".json"):
+            with open(os.path.join(folder, name), encoding="utf-8") as handle:
+                documents.append(json.load(handle)["results"])
+    documents.sort(key=lambda results: results["range"]["start"])
+
+    def legs(pool):
+        return f"{pool['out_of_pool']:,} out, {pool['into_pool']:,} in" if pool["transactions"] else "none"
+
+    first = [
+        "| Window | Transactions | Changed | Negative fees | Zero fees | Orchard newly accounted (zat) | Ironwood newly accounted (zat) |",
+        "|---|---:|---:|---|---|---|---|",
+    ]
+    second = [
+        "| Window | Coinjoin-flagged, before → after | Flags changed | Clustering input sets changed | Relation estimates changed | Their total change (zat) |",
+        "|---|---|---:|---:|---|---:|",
+    ]
+    for results in documents:
+        fees = results["fees_of_non_coinbase_transactions"]
+        flags = results["coinjoin_flags"]
+        sets = results["clustering_input_sets_changed"]["multi_input_address_set"]
+        relations = results["relation_estimates"]
+        first.append(
+            f"| {_range_label(results)} | {results['transactions']['total']:,} | {results['changed']['transactions']:,} "
+            f"| {fees['before']['negative']:,} → {fees['after']['negative']:,} | {fees['before']['zero']:,} → "
+            f"{fees['after']['zero']:,} | {legs(results['newly_accounted']['orchard'])} | "
+            f"{legs(results['newly_accounted']['ironwood'])} |"
+        )
+        second.append(
+            f"| {_range_label(results)} | {flags['before']:,} → {flags['after']:,} | "
+            f"{flags['false_to_true'] + flags['true_to_false']:,} | "
+            f"{sets['with_coinjoin_filter']:,} with filter, {sets['without_coinjoin_filter']:,} without | "
+            f"{relations['pairs_changed']:,} of {relations['pairs_after']:,} | {relations['absolute_change']:,} |"
+        )
+    return "\n".join(first) + "\n\n" + "\n".join(second)
+
+
+def test_the_guide_shows_the_published_results():
+    assert results_tables() in read("docs", "OPERATOR-GUIDE.md")
+
+
+def test_the_published_summaries_are_valid_and_canonical():
+    folder = os.path.join(ROOT, "results")
+    names = sorted(os.listdir(folder))
+    assert any(name.startswith("compare-") for name in names) and any(name.startswith("scan-") for name in names)
+    for name in names:
+        with open(os.path.join(folder, name), encoding="utf-8") as handle:
+            document = json.load(handle)
+        kind = "compare-summary" if name.startswith("compare-") else "scan-summary"
+        assert report_module.validate_report(ROOT, document, f"manifest/{kind}.schema.json") == [], name
+        assert report_module.checksum(document["results"]) == document["results_sha256"], name
+        assert document["results"]["canonical"] is True and document["results"]["tool"]["version"] == __version__, name
+        if kind == "compare-summary":
+            assert document["verdict"] == "pass", name
+            start, end = document["results"]["range"]["start"], document["results"]["range"]["end"]
+            assert name == f"compare-{start}-{end}.json"
